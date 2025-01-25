@@ -360,7 +360,7 @@ Transform:
   m_GameObject: {fileID: 795140550}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -592,13 +592,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   motor: {fileID: 1030744411}
+  root: {fileID: 1363225185}
   cameraTarget: {fileID: 565739997}
   walkSpeed: 20
   crouchSpeed: 10
   jumpSpeed: 20
-  gravity: 20
+  jumpSustainGravity: 0.4
+  gravity: -90
   standHeight: 2
-  crouchHeight: 2
+  crouchHeight: 1
+  walkResponse: 25
+  crouchResponse: 20
+  crouchHeightResponse: 20
   standCameraTargetHeight: 0.9
   crouchCameraTargetHeight: 0.7
 --- !u!4 &1030744410
@@ -829,7 +834,7 @@ Transform:
   m_GameObject: {fileID: 1363225184}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

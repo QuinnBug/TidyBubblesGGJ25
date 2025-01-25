@@ -1,4 +1,6 @@
+using KinematicCharacterController.Examples;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -32,20 +34,33 @@ public class Player : MonoBehaviour
         //Get camera input and update
         var cameraInput = new CameraInput { Look = input.Look.ReadValue<Vector2>() };
         playerCamera.UpdateRotation(cameraInput);
+        playerCamera.UpdatePostion(playerCharacter.GetCameraTarget());
 
         var characterInput = new CharacterInput {
             rotation = playerCamera.transform.rotation,
             Move = input.Move.ReadValue<Vector2>(),
             Jump = input.Jump.WasPressedThisFrame(),
+            JumpSustain = input.Jump.IsPressed(),
             Crouch = input.Crouch.WasPressedThisFrame() ? CrouchInput.Toggle : CrouchInput.None,
         };
         playerCharacter.UpdateInput(characterInput);
         playerCharacter.updateBody(deltaTime);
 
+#if UNITY_EDITOR
+        if (Keyboard.current.tKey.wasPressedThisFrame)
+        {
+            var ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+            if (Physics.Raycast(ray, out var hit))
+            {
+                Teleport(hit.point);
+            }
+        }
+#endif
+
+    }
+    public void Teleport(Vector3 position)
+    {
+        playerCharacter.SetPosition(position);
     }
 
-    private void LateUpdate()
-    {
-        playerCamera.UpdatePostion(playerCharacter.GetCameraTarget());
-    }
 }
