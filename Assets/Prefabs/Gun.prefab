@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d772a735b3ebe48ad202fd85c0de61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brushData: {fileID: 11400000, guid: c20a5d65ef24ec64b9a167a7d0f0e6e4, type: 2}
+  brushData: {fileID: 11400000, guid: 22afab63894da184781b08768fd3bc63, type: 2}
 --- !u!114 &7480783110652917342
 MonoBehaviour:
   m_ObjectHideFlags: 0
