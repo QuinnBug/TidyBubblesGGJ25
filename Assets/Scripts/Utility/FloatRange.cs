@@ -63,6 +63,11 @@ public struct FloatRange
     {
         return Random.Range(min, max);
     }
+
+    public float Clamp(float value) 
+    {
+        return Mathf.Clamp(value, min, max);
+    }
 }
 
 /// <summary>
