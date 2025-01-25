@@ -70,7 +70,7 @@ public class DirtObject : MonoBehaviour {
 
     private IEnumerator UpdateTexture() {
         // Magic optimisation number
-        yield return new WaitForSeconds(0.045f);
+        yield return new WaitForSeconds(0.02f);
         templateDirtMask.Apply();
         flagTextureUpdate = false;
     }
@@ -80,11 +80,6 @@ public class DirtObject : MonoBehaviour {
     }
     private float GetCleanliness() {
         return (float)cleanPixels / totalPixels;
-    }
-    private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.TryGetComponent<DirtBrush>(out DirtBrush brush)) {
-            Debug.Log($"What the fuck");
-        }
     }
 }
 public class DirtCleanData {

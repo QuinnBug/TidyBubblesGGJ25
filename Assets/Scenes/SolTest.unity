@@ -300,38 +300,6 @@ Transform:
   - {fileID: 1237965645}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1080651643 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 708430060511582542, guid: ad35063a480ec91488cfc259b3cc7a23, type: 3}
-  m_PrefabInstance: {fileID: 1650907539}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &1080651647
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1080651643}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 0
-  m_ImplicitTensor: 0
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1083408712
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,38 +421,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!1 &1219756006 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8915113515250914309, guid: ad35063a480ec91488cfc259b3cc7a23, type: 3}
-  m_PrefabInstance: {fileID: 1650907539}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &1219756010
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1219756006}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 0
-  m_ImplicitTensor: 0
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1237965644
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,51 +602,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8915113515250914309, guid: ad35063a480ec91488cfc259b3cc7a23, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1219756010}
-    - targetCorrespondingSourceObject: {fileID: 708430060511582542, guid: ad35063a480ec91488cfc259b3cc7a23, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1080651647}
-    - targetCorrespondingSourceObject: {fileID: 5018088583211847770, guid: ad35063a480ec91488cfc259b3cc7a23, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1834274140}
-    - targetCorrespondingSourceObject: {fileID: 5018088583211847770, guid: ad35063a480ec91488cfc259b3cc7a23, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1834274139}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad35063a480ec91488cfc259b3cc7a23, type: 3}
---- !u!1 &1834274136 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5018088583211847770, guid: ad35063a480ec91488cfc259b3cc7a23, type: 3}
-  m_PrefabInstance: {fileID: 1650907539}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1834274139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1834274136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e21913313a0424a468994dbb98382113, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  brush: {fileID: 1834274140}
---- !u!114 &1834274140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1834274136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85d772a735b3ebe48ad202fd85c0de61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  brushData: {fileID: 11400000, guid: c20a5d65ef24ec64b9a167a7d0f0e6e4, type: 2}
 --- !u!1 &1944502139
 GameObject:
   m_ObjectHideFlags: 0
