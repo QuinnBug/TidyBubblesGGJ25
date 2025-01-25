@@ -98,6 +98,8 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
 
     private bool _ungroundedDueToJump;
 
+    private float _timeSinceCrouchInAir;
+
     private Collider[] _uncrouchOverlapResults;
     public void Initialize()
     {
@@ -129,8 +131,8 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
         var wasRequestingCrouch = _requestedCrouch;
         _requestedCrouch = input.Crouch switch
         {
-            CrouchInput.Toggle => !_requestedCrouch,
-            CrouchInput.None => _requestedCrouch,
+            CrouchInput.Toggle => true,
+            CrouchInput.None => false,
             _ => _requestedCrouch
         };
 
