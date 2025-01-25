@@ -42,7 +42,6 @@ public class DirtBrush : MonoBehaviour
         if (cleanData.DirtPixels.Count == 0) {
             return;
         }
-        Debug.Log("Painted");
         dirt.CleanLocation(cleanData);
     }
 }
