@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 public class MouseDirtPainter : MonoBehaviour
 {
     [SerializeField] private DirtBrush brush;   
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,8 +15,7 @@ public class MouseDirtPainter : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         // Get player mouse input
         if (Input.GetMouseButton(0)) {
             if (!Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var raycastHit))
@@ -27,6 +27,13 @@ public class MouseDirtPainter : MonoBehaviour
             }
             else {
                 Debug.Log("No dirt object found");
+            }
+        }
+        if (Input.GetMouseButtonUp(0)) {
+            if (!Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var raycastHit))
+                return;
+            if (raycastHit.collider.TryGetComponent<DirtObject>(out var dirt)) {
+                Debug.Log($"Cleanliness: {dirt.CleanlinessRounded}% ({dirt.Cleanliness})");
             }
         }
     }

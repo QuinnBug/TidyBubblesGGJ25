@@ -374,6 +374,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dirtMaskBase: {fileID: 2800000, guid: 94c5110a41e24504290b34a788723afe, type: 3}
+  cleanTexture: {fileID: 2800000, guid: 23804dacdbdaa434d96b5b7f7bd56567, type: 3}
+  cleanlinessTolerance: 0.5
+  cleanlinessThreshold: 80
 --- !u!64 &1237965650
 MeshCollider:
   m_ObjectHideFlags: 0

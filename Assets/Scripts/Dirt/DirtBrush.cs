@@ -27,17 +27,20 @@ public class DirtBrush : MonoBehaviour
         DirtCleanData cleanData = new();
         for (int x = 0; x < BrushSize.x; x++) {
             for (int y = 0; y < BrushSize.y; y++) {
-                var pixelDirtMask = dirt.GetColour(paintPosition.x + x, paintPosition.y + y);
                 var paintPixel = paintPosition + new Vector2Int(x, y);
                 var dirtCol = dirt.GetColour(paintPixel.x, paintPixel.y);
 
+                //  Attempt to optimise a tiny bit by skipping clean pixels
+                if (dirtCol.g <= dirt.CLeanlinessTolerance) {
+                    continue;
+                }
                 var pixelDirt = BrushTexture.GetPixel(x, y);
                 var colourToApply = new Color(0, dirtCol.g * pixelDirt.g, 0);
-                cleanData.AddCleanedPixel(paintPixel, colourToApply);
-
-
-                dirt.Texture.SetPixel(paintPixel.x, paintPixel.y, colourToApply);
+                cleanData.AddPixelData(paintPixel, colourToApply);
             }
+        }
+        if (cleanData.DirtPixels.Count == 0) {
+            return;
         }
         Debug.Log("Painted");
         dirt.CleanLocation(cleanData);
