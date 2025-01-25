@@ -13,7 +13,7 @@ public class DirtObject : MonoBehaviour {
 
     [SerializeField] private float cleanlinessTolerance = 0.35f; // How clean a pixel has to be to be considered clean
     [SerializeField] private float cleanlinessThreshold = 5f; //80f; // How clean the object has to be to be considered clean
-    public float CLeanlinessTolerance => cleanlinessTolerance;
+    public float CleanlinessTolerance => cleanlinessTolerance;
     public float Cleanliness => GetCleanliness() * 100f;
     public int CleanlinessRounded => (int)Cleanliness;
 
@@ -22,12 +22,18 @@ public class DirtObject : MonoBehaviour {
     private int totalPixels = 0;
     private int cleanPixels = 0;
 
+    bool flagTextureUpdate = false;
+
     void Start() {
         CreateTexture();
     }
 
 
     private void CreateTexture() {
+        if (dirtMaskBase == null) {
+            Debug.LogWarning($"{gameObject.name} does not have assigned textures.");
+            return;
+        }
         //  We don't want to modify the original texture, so we create a copy of it  
         var renderer = GetComponent<Renderer>();
         if (renderer != null) {
@@ -51,19 +57,35 @@ public class DirtObject : MonoBehaviour {
             }
             templateDirtMask.SetPixel(cleanedPixels[i].Item1.x, cleanedPixels[i].Item1.y, cleanedPixels[i].Item2);
         }
-        templateDirtMask.Apply();
+        if (!flagTextureUpdate) {
+            flagTextureUpdate = true;
+            StartCoroutine(UpdateTexture());
+        } 
+
+        
         if (IsClean) {
             ClearAllDirt();
         }
     }
 
+    private IEnumerator UpdateTexture() {
+        // Magic optimisation number
+        yield return new WaitForSeconds(0.045f);
+        templateDirtMask.Apply();
+        flagTextureUpdate = false;
+    }
     public void ClearAllDirt() {
         var renderer = GetComponent<Renderer>();
         renderer.material.SetTexture("_DirtMask", cleanTexture);
     }
     private float GetCleanliness() {
         return (float)cleanPixels / totalPixels;
-    }    
+    }
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.TryGetComponent<DirtBrush>(out DirtBrush brush)) {
+            Debug.Log($"What the fuck");
+        }
+    }
 }
 public class DirtCleanData {
     private List<System.Tuple<Vector2Int, Color>> dirtPixels;

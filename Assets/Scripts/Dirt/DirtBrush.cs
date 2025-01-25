@@ -31,7 +31,7 @@ public class DirtBrush : MonoBehaviour
                 var dirtCol = dirt.GetColour(paintPixel.x, paintPixel.y);
 
                 //  Attempt to optimise a tiny bit by skipping clean pixels
-                if (dirtCol.g <= dirt.CLeanlinessTolerance) {
+                if (dirtCol.g <= dirt.CleanlinessTolerance) {
                     continue;
                 }
                 var pixelDirt = BrushTexture.GetPixel(x, y);
