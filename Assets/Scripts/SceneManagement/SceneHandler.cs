@@ -24,13 +24,13 @@ public class SceneHandler: PersistentSingleton<SceneHandler>
     public void StartTransition()
     {
         transitionAnimator.speed = transitionSpeed;
-        transitionAnimator.Play("SwipeOut");
+        transitionAnimator.Play("SwipeIn_Right");
     }
 
     public void EndTransition()
     {
         transitionAnimator.speed = transitionSpeed;
-        transitionAnimator.Play("SwipeIn");
+        transitionAnimator.Play("SwipeOut_Left");
     }
 
     public void TransitionScene(int _sceneToTransitionTo)
