@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Mesh Collider required to get the texture coordinates
+[RequireComponent(typeof(MeshCollider))]
 public class DirtObject : MonoBehaviour {
 
     [SerializeField] private Texture2D dirtMaskBase;

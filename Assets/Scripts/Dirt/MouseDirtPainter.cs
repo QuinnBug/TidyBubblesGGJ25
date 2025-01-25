@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
+[RequireComponent(typeof(DirtBrush))]
 public class MouseDirtPainter : MonoBehaviour
 {
     [SerializeField] private DirtBrush brush;   
@@ -17,11 +18,15 @@ public class MouseDirtPainter : MonoBehaviour
     {
         // Get player mouse input
         if (Input.GetMouseButton(0)) {
-            Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var raycastHit);
+            if (!Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var raycastHit))
+                return;
             if (raycastHit.collider.TryGetComponent<DirtObject>(out var dirt)) {
                 //Debug.Log(raycastHit.collider.name);
                 Vector2 texCoord = raycastHit.textureCoord;
                 brush.CleanDirt(dirt, texCoord);
+            }
+            else {
+                Debug.Log("No dirt object found");
             }
         }
     }
