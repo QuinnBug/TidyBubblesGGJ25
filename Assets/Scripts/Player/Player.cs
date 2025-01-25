@@ -3,7 +3,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    [SerializeField] private PlayerCharacter character;
+    [SerializeField] private PlayerCharacter playerCharacter;
     [SerializeField] private PlayerCamera playerCamera;
 
 
@@ -16,8 +16,8 @@ public class Player : MonoBehaviour
         _inputActions.Enable();
 
 
-        character.Initialize();
-        playerCamera.Initialize(character.GetCameraTarget());
+        playerCharacter.Initialize();
+        playerCamera.Initialize(playerCharacter.GetCameraTarget());
     }
 
     private void OnDestroy()
@@ -33,15 +33,18 @@ public class Player : MonoBehaviour
         playerCamera.UpdateRotation(cameraInput);
 
         var characterInput = new CharacterInput {
-            rotation    = playerCamera.transform.rotation,
-            Move        = input.Move.ReadValue<Vector2>()
+            rotation = playerCamera.transform.rotation,
+            Move = input.Move.ReadValue<Vector2>(),
+            Jump = input.Jump.WasPressedThisFrame(),
+            Crouch = input.Crouch.WasPressedThisFrame() ? CrouchInput.Toggle : CrouchInput.None,
         };
-        character.UpdateInput(characterInput);
+        playerCharacter.UpdateInput(characterInput);
+        playerCharacter.updateBody();
 
     }
 
     private void LateUpdate()
     {
-        playerCamera.UpdatePostion(character.GetCameraTarget());
+        playerCamera.UpdatePostion(playerCharacter.GetCameraTarget());
     }
 }
