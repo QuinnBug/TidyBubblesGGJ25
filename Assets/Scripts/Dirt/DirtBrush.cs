@@ -25,8 +25,8 @@ public class DirtBrush : MonoBehaviour
         //Debug.Log($"Pixel position: {pixelX} / {texCoord.x}, {pixelY} / {texCoord.y}");
         //Set pixels in the texture
         DirtCleanData cleanData = new();
-        for (int x = 0; x < BrushSize.x; x++) {
-            for (int y = 0; y < BrushSize.y; y++) {
+        for (int x = -BrushSize.x; x < BrushSize.x; x++) {
+            for (int y = -BrushSize.y; y < BrushSize.y; y++) {
                 var paintPixel = paintPosition + new Vector2Int(x, y);
                 var dirtCol = dirt.GetColour(paintPixel.x, paintPixel.y);
 

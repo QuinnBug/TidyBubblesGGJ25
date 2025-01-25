@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour {
     }
     private void OnTriggerEnter(Collider other) {
         if (other.TryGetComponent(out DirtObject dirt)) {
-            if (Physics.Raycast(transform.position, transform.forward, out var hit)) {
+            if (Physics.Raycast(transform.position, Vector3.down, out var hit)) {
                 var textureCoord = hit.textureCoord;
                 OnHitDirt.Invoke(this, dirt, textureCoord);
             }

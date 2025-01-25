@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(MeshCollider))]
 public class DirtObject : MonoBehaviour {
 
+    public static float CleanTick = 0.025f;
     [SerializeField] private Texture2D dirtMaskBase;
     [SerializeField] private Texture2D cleanTexture;
     private Texture2D templateDirtMask;
@@ -70,7 +71,7 @@ public class DirtObject : MonoBehaviour {
 
     private IEnumerator UpdateTexture() {
         // Magic optimisation number
-        yield return new WaitForSeconds(0.02f);
+        yield return new WaitForSeconds(CleanTick);
         templateDirtMask.Apply();
         flagTextureUpdate = false;
     }
