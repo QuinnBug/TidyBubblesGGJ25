@@ -72,6 +72,7 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     [SerializeField] private float crouchCameraTargetHeight = 0.7f;
 
     private CharacterState _state;
+    public CharacterState CurrentState => _state;
 
     private CharacterState _lastState;
 
