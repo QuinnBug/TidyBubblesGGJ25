@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         var input = _inputActions.Gameplay;
+        var deltaTime = Time.deltaTime;
 
         //Get camera input and update
         var cameraInput = new CameraInput { Look = input.Look.ReadValue<Vector2>() };
@@ -39,7 +40,7 @@ public class Player : MonoBehaviour
             Crouch = input.Crouch.WasPressedThisFrame() ? CrouchInput.Toggle : CrouchInput.None,
         };
         playerCharacter.UpdateInput(characterInput);
-        playerCharacter.updateBody();
+        playerCharacter.updateBody(deltaTime);
 
     }
 
