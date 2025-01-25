@@ -130,6 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6247947679102324839, guid: 1eaf41e98093bdc46be0a57812c5788c, type: 3}
   bulletSpawn: {fileID: 5654514160972428614}
+  ammo: 3
 --- !u!1 &1802665038059108168
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,7 +142,6 @@ GameObject:
   - component: {fileID: 8833527867402136297}
   - component: {fileID: 2407541059479753604}
   - component: {fileID: 5573351770118434119}
-  - component: {fileID: 1862459629000937702}
   m_Layer: 2
   m_Name: Barrel (4)
   m_TagString: Untagged
@@ -217,27 +217,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1862459629000937702
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1802665038059108168}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3975214264708119371
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,7 +228,6 @@ GameObject:
   - component: {fileID: 4667130852245499579}
   - component: {fileID: 4175427617153763677}
   - component: {fileID: 5060908084366599516}
-  - component: {fileID: 7531008567928994952}
   m_Layer: 2
   m_Name: Barrel (1)
   m_TagString: Untagged
@@ -325,27 +303,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7531008567928994952
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3975214264708119371}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6146411855691171265
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,7 +314,6 @@ GameObject:
   - component: {fileID: 2169244678145824087}
   - component: {fileID: 1241679562823048656}
   - component: {fileID: 1809142906746913018}
-  - component: {fileID: 4271205336182211770}
   m_Layer: 2
   m_Name: Handle
   m_TagString: Untagged
@@ -433,27 +389,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4271205336182211770
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6146411855691171265}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6508658174646516480
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,7 +400,6 @@ GameObject:
   - component: {fileID: 2991633969046010784}
   - component: {fileID: 6330281211787029433}
   - component: {fileID: 446538611238039645}
-  - component: {fileID: 6916453342250106126}
   m_Layer: 2
   m_Name: Barrel
   m_TagString: Untagged
@@ -541,27 +475,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6916453342250106126
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6508658174646516480}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6629379576175045692
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,7 +486,6 @@ GameObject:
   - component: {fileID: 8426640280126441132}
   - component: {fileID: 2088970841170807046}
   - component: {fileID: 8766570594931830333}
-  - component: {fileID: 3556101212218657442}
   m_Layer: 2
   m_Name: Barrel (2)
   m_TagString: Untagged
@@ -649,27 +561,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3556101212218657442
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6629379576175045692}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7547728794759264911
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,7 +572,6 @@ GameObject:
   - component: {fileID: 4932053031309201028}
   - component: {fileID: 5758155506127392796}
   - component: {fileID: 1578862294740841523}
-  - component: {fileID: 6068666218970132334}
   m_Layer: 2
   m_Name: Barrel (3)
   m_TagString: Untagged
@@ -757,24 +647,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6068666218970132334
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7547728794759264911}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}

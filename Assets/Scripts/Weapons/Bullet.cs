@@ -23,27 +23,11 @@ public class Bullet : MonoBehaviour {
     }
     private void OnTriggerEnter(Collider other) {
         if (other.TryGetComponent(out DirtObject dirt)) {
-            if (Physics.SphereCast(transform.position, 0.5f, transform.forward, out var hit)) {
+            if (Physics.Raycast(transform.position, transform.forward, out var hit)) {
                 var textureCoord = hit.textureCoord;
                 OnHitDirt.Invoke(this, dirt, textureCoord);
             }
-            else {
-                if (Physics.SphereCast(transform.position, 0.5f, Vector3.down, out var backupHit)) {
-
-                    var textureCoord = backupHit.textureCoord;
-                    OnHitDirt.Invoke(this, dirt, textureCoord);
-                }
-                else {
-                    if (Physics.SphereCast(transform.position, 0.5f, Vector3.forward, out var backupHit2)) {
-                        var textureCoord = backupHit2.textureCoord;
-                        OnHitDirt.Invoke(this, dirt, textureCoord);
-                    }
-                    else {
-                        OnMiss.Invoke(this);
-                        Debug.Log("No texture hit, what");
-                    }
-                }
-            }
+            
         }
         else OnHit.Invoke(this);
         Destroy(gameObject);
