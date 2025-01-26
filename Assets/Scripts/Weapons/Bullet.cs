@@ -11,6 +11,9 @@ public class Bullet : MonoBehaviour {
     private float lifetime = 3.5f;
     public Rigidbody Rb;
 
+    [SerializeField] private float rayDeviation = 0.3f;
+    private Vector3 deviation;
+
     private void Update() {
         lifetime -= Time.deltaTime;
         if (lifetime <= 0) {
@@ -25,8 +28,10 @@ public class Bullet : MonoBehaviour {
         if (collision.gameObject.TryGetComponent(out DirtObject dirt)) {
             var contactPoint = collision.GetContact(0).point;
             var rayDirection = contactPoint - transform.position;
+            deviation = new Vector3(Random.Range(-rayDeviation, rayDeviation), 0, Random.Range(-rayDeviation, rayDeviation));
+            var rayPosition = transform.position + deviation;
             //Debug.DrawRay(transform.position, rayDirection, Color.red, 5f);
-            if (Physics.Raycast(transform.position, rayDirection, out var hit)) {
+            if (Physics.Raycast(rayPosition, rayDirection, out var hit)) {
                 var textureCoord = hit.textureCoord;
                 OnHitDirt.Invoke(this, dirt, textureCoord);
             }

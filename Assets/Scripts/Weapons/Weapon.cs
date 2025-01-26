@@ -6,7 +6,7 @@ public class Weapon : MonoBehaviour
     private DirtBrush dirtBrush; // Will be attached to the bullet
     [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private Transform bulletSpawn;
-    [SerializeField] int ammo = 3;
+    [SerializeField] int ammo = 6;
     private bool canFire => ammo > 0;
 
     private void Awake() {

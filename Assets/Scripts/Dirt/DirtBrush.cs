@@ -42,6 +42,9 @@ public class DirtBrush : MonoBehaviour
         //Set pixels in the texture
         for (int x = 0; x < BrushSize.x; x++) {
             for (int y = 0; y < BrushSize.y; y++) {
+                if (x + pixelX >= dirt.Texture.width || y + pixelY >= dirt.Texture.height) {
+                    continue;
+                }
                 paintPixel = paintPosition + new Vector2Int(x, y);
                 dirtCol = dirt.GetColour(paintPixel.x, paintPixel.y);
 
