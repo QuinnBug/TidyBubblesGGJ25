@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour {
         if (collision.gameObject.TryGetComponent(out DirtObject dirt)) {
             var contactPoint = collision.GetContact(0).point;
             var rayDirection = contactPoint - transform.position;
-            deviation = new Vector3(Random.Range(-rayDeviation, 0), 0, Random.Range(-rayDeviation, 0));
+            deviation = new Vector3(Random.Range(-rayDeviation, rayDeviation), 0, Random.Range(-rayDeviation, rayDeviation));
             var rayDirDeviated = rayDirection + deviation;
             //Debug.DrawRay(transform.position, rayDirection, Color.red, 5f);
             if (Physics.Raycast(transform.position, rayDirDeviated, out var hit)) {
