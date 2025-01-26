@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brushData: {fileID: 11400000, guid: 22afab63894da184781b08768fd3bc63, type: 2}
+  BrushSize: {x: 0, y: 0}
 --- !u!114 &7480783110652917342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +131,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6247947679102324839, guid: 1eaf41e98093bdc46be0a57812c5788c, type: 3}
   bulletSpawn: {fileID: 5654514160972428614}
-  ammo: 3
+  ammo: 6
+  fireRate: 0.24
 --- !u!1 &1802665038059108168
 GameObject:
   m_ObjectHideFlags: 0
