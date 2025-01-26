@@ -100,10 +100,12 @@ public class GameManager : PersistentSingleton<GameManager>
         {
             voicelineTimer -= Time.deltaTime;
         }
+
         var cleanedPercentage = ((float)cleanedObjects.Count / dirtystuff.Count) * 100f;
+        CameraPropsManager.Instance.SetPercent(Mathf.Round(cleanedPercentage));
         if (cleanedPercentage > percentageToWin)
         {
-            //Win;
+            SceneHandler.Instance.TransitionScene(0);
         } 
     }
 

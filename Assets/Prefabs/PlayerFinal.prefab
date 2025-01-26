@@ -1420,21 +1420,9 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9136361365177998811, guid: 0e9a007801c93e44f9c5f2a632e00e89, type: 3}
-      propertyPath: gunTF
-      value: 
-      objectReference: {fileID: 9164394485996956815}
-    - target: {fileID: 9136361365177998811, guid: 0e9a007801c93e44f9c5f2a632e00e89, type: 3}
       propertyPath: screenShakeTF
       value: 
       objectReference: {fileID: 4560714789255712343}
-    - target: {fileID: 9136361365177998811, guid: 0e9a007801c93e44f9c5f2a632e00e89, type: 3}
-      propertyPath: shakeStrength
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9136361365177998811, guid: 0e9a007801c93e44f9c5f2a632e00e89, type: 3}
-      propertyPath: shakeRange.max
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

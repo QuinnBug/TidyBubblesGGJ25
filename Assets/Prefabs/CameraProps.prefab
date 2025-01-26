@@ -1658,6 +1658,7 @@ MonoBehaviour:
   gunTF: {fileID: 9061116411683204037}
   verticalRecoil: 30
   recoilRecoveryRate: 0.05
+  scoreText: {fileID: 8355086526964298346}
   faceImage: {fileID: 5225507097726075236}
   faceTxtrs:
   - {fileID: 21300000, guid: e544ee78904d8584896ce8fe154239dd, type: 3}

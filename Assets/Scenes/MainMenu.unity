@@ -293,32 +293,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6477785936430036769, guid: e30b24d5ddd3ab34cbbb71fafbb336eb, type: 3}
-      propertyPath: voicelineDelayRange.max
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 6477785936430036769, guid: e30b24d5ddd3ab34cbbb71fafbb336eb, type: 3}
-      propertyPath: voicelineDelayRange.min
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6477785936430036769, guid: e30b24d5ddd3ab34cbbb71fafbb336eb, type: 3}
-      propertyPath: speedBoundaries.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6477785936430036769, guid: e30b24d5ddd3ab34cbbb71fafbb336eb, type: 3}
-      propertyPath: 'speedBoundaries.Array.data[0]'
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6477785936430036769, guid: e30b24d5ddd3ab34cbbb71fafbb336eb, type: 3}
-      propertyPath: 'speedBoundaries.Array.data[1]'
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6477785936430036769, guid: e30b24d5ddd3ab34cbbb71fafbb336eb, type: 3}
       propertyPath: 'speedBoundaries.Array.data[2]'
-      value: 20
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 6477785936430036769, guid: e30b24d5ddd3ab34cbbb71fafbb336eb, type: 3}
       propertyPath: 'speedBoundaries.Array.data[3]'
-      value: 25
+      value: 21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -598,18 +578,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameAudio:
     mixer: {fileID: 24100000, guid: 18d6899cfd9209b43b819438b4cd83c3, type: 2}
-    transitionRate: 0.5
+    transitionRate: 1.5
   fxSourcePrefab: {fileID: 5789898745261458457, guid: 0e9202a2218b8844582a44a20660cff5, type: 3}
   pitchRange:
     min: 0.5
     max: 1.25
   fxClips:
-  - {fileID: 8300000, guid: 36df379b8c848c246804c7531f69229f, type: 3}
   - {fileID: 8300000, guid: 01af2f18bdb3db540ac45c9961d474aa, type: 3}
+  - {fileID: 8300000, guid: 36df379b8c848c246804c7531f69229f, type: 3}
   - {fileID: 8300000, guid: a27448e5f9e447e4786ecaf53d679659, type: 3}
   - {fileID: 8300000, guid: 325269c58cffba246a615c645f4e7b60, type: 3}
   - {fileID: 8300000, guid: 6082221edd7409646b1e700983f8a7ce, type: 3}
-  - {fileID: 8300000, guid: 4fd42f56d3262a347b636d22de4e56d2, type: 3}
+  - {fileID: 0}
   voClips:
   - {fileID: 8300000, guid: f833a4cd84d0b8942b46a223cbe62466, type: 3}
   - {fileID: 8300000, guid: f25ef4f8ee2412e42a50cca1a1ab7e25, type: 3}
@@ -644,7 +624,7 @@ AudioSource:
   m_GameObject: {fileID: 1101566597}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -776461382199077019, guid: 18d6899cfd9209b43b819438b4cd83c3, type: 2}
+  OutputAudioMixerGroup: {fileID: 7987142423256467674, guid: 18d6899cfd9209b43b819438b4cd83c3, type: 2}
   m_audioClip: {fileID: 8300000, guid: ba386b83002f5e6499a07cb4c7940e39, type: 3}
   m_Resource: {fileID: 8300000, guid: ba386b83002f5e6499a07cb4c7940e39, type: 3}
   m_PlayOnAwake: 1
@@ -1032,7 +1012,7 @@ AudioSource:
   m_GameObject: {fileID: 1101566597}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 7987142423256467674, guid: 18d6899cfd9209b43b819438b4cd83c3, type: 2}
+  OutputAudioMixerGroup: {fileID: -776461382199077019, guid: 18d6899cfd9209b43b819438b4cd83c3, type: 2}
   m_audioClip: {fileID: 8300000, guid: 230d3a266732d224f928ecea031bfca1, type: 3}
   m_Resource: {fileID: 8300000, guid: 230d3a266732d224f928ecea031bfca1, type: 3}
   m_PlayOnAwake: 1
@@ -1392,7 +1372,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 164d722f3042a39498005f3a7c093da6, type: 3}
   m_Resource: {fileID: 8300000, guid: 164d722f3042a39498005f3a7c093da6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

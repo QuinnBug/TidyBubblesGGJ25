@@ -45,8 +45,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f3a665a22853a8469e36d9815d7bd16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedBoundaries: []
+  speedBoundaries:
+  - 0
+  - 10
+  - 20
+  - 25
+  voicelineDelayRange:
+    min: 8
+    max: 12
   completeCleanFx: {fileID: 6246248197283431989, guid: 22e12befea4abc64a9525a1572ce8cbb, type: 3}
+  percentageToWin: 80
 --- !u!1 &545891230543095743
 GameObject:
   m_ObjectHideFlags: 0

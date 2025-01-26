@@ -20,6 +20,8 @@ public class CameraPropsManager : Singleton<CameraPropsManager>
     public float verticalRecoil = 0.1f;
     public float recoilRecoveryRate = 0.5f;
     private Quaternion gunDefaultRot;
+    [Tooltip("Score")]
+    public TMPro.TextMeshProUGUI scoreText;
     [Space]
     [Tooltip("The Face")]
     public Image faceImage;
@@ -76,6 +78,11 @@ public class CameraPropsManager : Singleton<CameraPropsManager>
     public void SetSpeed(float _speed) 
     {
         targetSpeedValue = _speed;
+    }
+
+    public void SetPercent(float _speed)
+    {
+        scoreText.text = _speed.ToString() + "%";
     }
 
     public void Recoil() 
