@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour {
         if (collision.gameObject.TryGetComponent(out DirtObject dirt)) {
             var contactPoint = collision.GetContact(0).point;
             var rayDirection = contactPoint - transform.position;
-            Debug.DrawRay(transform.position, rayDirection, Color.red, 5f);
+            //Debug.DrawRay(transform.position, rayDirection, Color.red, 5f);
             if (Physics.Raycast(transform.position, rayDirection, out var hit)) {
                 var textureCoord = hit.textureCoord;
                 OnHitDirt.Invoke(this, dirt, textureCoord);

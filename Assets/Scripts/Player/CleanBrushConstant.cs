@@ -6,7 +6,6 @@ public class CleanBrushConstant : DirtBrush
     private string myName;
     private DirtObject currentDirt;
     private bool waitForTick = false;
-    private float timer = DirtObject.CleanTick;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -16,10 +15,6 @@ public class CleanBrushConstant : DirtBrush
     // Update is called once per frame
     void Update()
     {
-        if (waitForTick) {
-            timer -= Time.deltaTime;
-            if (timer <= 0f) waitForTick = false;
-        }
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -46,7 +41,6 @@ public class CleanBrushConstant : DirtBrush
         if (Physics.Raycast(ray, out RaycastHit hit)) {
             CleanDirt(currentDirt, hit.textureCoord);
         }
-        waitForTick = true;
 
     }
     private void OnTriggerExit(Collider other) {
