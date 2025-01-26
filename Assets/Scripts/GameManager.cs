@@ -14,9 +14,10 @@ public class GameManager : PersistentSingleton<GameManager>
     PlayerCharacter player;
     float playerSpeed = 0;
     int intensityLevel = 0;
+    float voicelineTimer;
+    [Space]
     [SerializeField] private GameObject completeCleanFx;
     private List<GameObject> cleanFxPool = new();
-    float voicelineTimer = 1;
 
     private List<GameObject> dirtystuff = new();
     private List<DirtObject> cleanedObjects = new();
@@ -24,9 +25,8 @@ public class GameManager : PersistentSingleton<GameManager>
 
     private void Start()
     {
+        voicelineTimer = voicelineDelayRange.Min;
         SceneHandler.OnSceneChange += OnSceneLoaded;
-
-
     }
 
     void OnSceneLoaded(int sceneNumber)
@@ -86,12 +86,10 @@ public class GameManager : PersistentSingleton<GameManager>
         }
 
         AudioManager.Instance.SetMusicLevel(intensityLevel);
-        if (intensityLevel >= 1)
+        if (intensityLevel >= 2)
         {
-            if (intensityLevel >= 2)
-            {
-                CameraPropsManager.Instance.QueueFace(CameraPropsManager.Face.HAPPY, 0.01f);
-            }
+            CameraPropsManager.Instance.QueueFace(CameraPropsManager.Face.HAPPY, 0.01f);
+        }
 
             if (voicelineTimer <= 0)
             {
@@ -109,10 +107,10 @@ public class GameManager : PersistentSingleton<GameManager>
         }
     }
 
-
-
-    public void PlayCleanVfx(Vector3 location)
-    {
+    public void PlayCleanVfx(Vector3 location) {
+        if (cleanFxPool.Find(x => !x.activeInHierarchy) != null) {
+            var activeFx = cleanFxPool.Find(x => !x.activeInHierarchy);
+            activeFx.transform.position = location;
         if (cleanFxPool.Find(x => !x.activeInHierarchy) != null)
         {
             var activeFx = cleanFxPool.Find(x => !x.activeInHierarchy);
