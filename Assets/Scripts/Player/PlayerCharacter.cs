@@ -41,6 +41,7 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     [SerializeField] private KinematicCharacterMotor motor;
     [SerializeField] private Transform root;
     [SerializeField] private Transform cameraTarget;
+    [SerializeField] private BroomLeg broomLeg;
     [Space]
     [SerializeField] private float walkSpeed = 20f;
     [SerializeField] private float crouchSpeed = 7f;
@@ -100,6 +101,8 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     private bool _requestedCrouchInAir;
 
     private bool _requestedAirSlam;
+
+    private bool _usedAirSlam;
 
     private float _timeSinceUngrounded;
 
@@ -473,9 +476,13 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
                 effectiveGravity *= jumpSustainGravity;
             }
             currentVelocity += deltaTime * effectiveGravity * motor.CharacterUp;
-            if (_requestedAirSlam)
+
+            //Air Slam
+            if (_requestedAirSlam && !_usedAirSlam)
             {
                 _requestedAirSlam = false;
+                _usedAirSlam = true;
+
                 currentVelocity = motor.CharacterUp * airSlamSpeed;
                 Debug.Log("SLAM!!");
             }
@@ -530,6 +537,14 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
 
     public void OnGroundHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
     {
+        if (_usedAirSlam)
+        {
+            _usedAirSlam = false;
+            Debug.Log("Slam Hit");
+            broomLeg.ShitOnFloor(SlamStrength.Hard);
+
+        }
+
     }
 
     public void OnMovementHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
