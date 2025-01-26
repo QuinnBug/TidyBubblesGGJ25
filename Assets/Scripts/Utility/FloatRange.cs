@@ -68,6 +68,25 @@ public struct FloatRange
     {
         return Mathf.Clamp(value, min, max);
     }
+
+    public float ValueAsPercent(float value) 
+    {
+        if (Contains(value))
+        {
+            return (value - min) / Difference;
+        }
+        else
+        {
+            if (value < min)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
+        }
+    }
 }
 
 /// <summary>

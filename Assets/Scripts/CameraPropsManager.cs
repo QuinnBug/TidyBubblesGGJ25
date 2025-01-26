@@ -8,6 +8,13 @@ using UnityEngine.UI;
 
 public class CameraPropsManager : Singleton<CameraPropsManager>
 {
+    [Tooltip("SpeedDisplay")]
+    public FloatRange speedBarRange;
+    public Image speedImage;
+    public float speedBarLerpSpeed;
+    private float speedValue;
+    private float targetSpeedValue;
+    [Space]
     [Tooltip("Gun")]
     public Transform gunTF;
     public float verticalRecoil = 0.1f;
@@ -63,12 +70,27 @@ public class CameraPropsManager : Singleton<CameraPropsManager>
         }
 
         RecoilRecovery();
+        SpeedBarUpdate();
     }
-    
+
+    public void SetSpeed(float _speed) 
+    {
+        targetSpeedValue = _speed;
+    }
+
     public void Recoil() 
     {
         gunTF.localRotation = gunDefaultRot;
         gunTF.Rotate(verticalRecoil, 0, 0);
+    }
+
+    private void SpeedBarUpdate() 
+    {
+        if (speedValue != targetSpeedValue)
+        {
+            speedValue = Mathf.Lerp(speedValue, targetSpeedValue, speedBarLerpSpeed * Time.deltaTime);
+        }
+        speedImage.fillAmount = speedBarRange.ValueAsPercent(speedValue);
     }
 
     private void RecoilRecovery() 
