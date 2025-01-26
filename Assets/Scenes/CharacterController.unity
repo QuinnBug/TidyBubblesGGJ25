@@ -1261,6 +1261,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 365209437026041241, guid: 64b9182b031dd55458fa67ed06aa9ca7, type: 3}
+      propertyPath: playerCharacter
+      value: 
+      objectReference: {fileID: 640634592}
     - target: {fileID: 4938078811695510103, guid: 64b9182b031dd55458fa67ed06aa9ca7, type: 3}
       propertyPath: ammo
       value: 6
