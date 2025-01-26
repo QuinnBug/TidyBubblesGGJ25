@@ -34,25 +34,24 @@ public struct Pool
         Expand(startSize);
     }
 
-    //public bool Update(float _timePassed) 
-    //{
-    //    for (int i = 0; i < inUse.Count; i++)
-    //    {
-    //        if (disposeTimers.ContainsKey(inUse[i]))
-    //        {
-    //            disposeTimers[inUse[i]] -= _timePassed;
+    public bool Update()
+    {
+        for (int i = 0; i < inUse.Count; ++i)
+        {
+            if (disposeTimers.ContainsKey(inUse[i]))
+            {
+                disposeTimers[inUse[i]] -= Time.deltaTime;
 
-    //            if (disposeTimers[inUse[i]] <= 0)
-    //            {
-    //                //Debug.Log("Disposing " + inUse[i]);
-    //                Dispose(inUse[i]);
-    //                i--;
-    //            }
-    //        }
-    //    }
+                if (disposeTimers[inUse[i]] <= 0)
+                {
+                    Dispose(inUse[i]);
+                    --i;
+                }
+            }
+        }
 
-    //    return disposeTimers.Count > 0;
-    //}
+        return disposeTimers.Count > 0;
+    }
 
     public void Expand(int count) 
     {
@@ -106,14 +105,14 @@ public struct Pool
     /// <summary>
     /// For this function to work, you need to called the pooling Update function at some point
     /// </summary>
-    //public void DelayedDispose(GameObject poolObject, float _delay) 
-    //{
-    //    int i = objects.FindIndex(x => x == poolObject);
+    public void DelayedDispose(GameObject poolObject, float _delay)
+    {
+        int i = objects.FindIndex(x => x == poolObject);
 
-    //    if (disposeTimers.ContainsKey(i)) return;
+        if (disposeTimers.ContainsKey(i)) return;
 
-    //    disposeTimers.Add(i, _delay);
-    //}
+        disposeTimers.Add(i, _delay);
+    }
 
     public void Dispose(GameObject poolObject) 
     {
