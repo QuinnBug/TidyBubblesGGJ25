@@ -6,7 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(MeshCollider))]
 public class DirtObject : MonoBehaviour {
 
-    public static float CleanTick = 0.017f;
     [SerializeField] private Texture2D dirtMaskBase;
     private int width;
     private int height;
@@ -26,8 +25,6 @@ public class DirtObject : MonoBehaviour {
     private int cleanPixels = 0;
 
     private Color[] dirtPixels;
-
-    bool flagTextureUpdate = false;
 
     private void Awake() {
     }
@@ -71,24 +68,15 @@ public class DirtObject : MonoBehaviour {
             //templateDirtMask.SetPixel(cleanedPixels[i].Item1.x, cleanedPixels[i].Item1.y, cleanedPixels[i].Item2);
 
         }
-        if (!flagTextureUpdate) {
-            flagTextureUpdate = true;
-            StartCoroutine(UpdateTexture());
-        } 
-
         
         if (IsClean) {
             ClearAllDirt();
         }
-    }
-
-    private IEnumerator UpdateTexture() {
-        // Magic optimisation number
-        yield return new WaitForSeconds(CleanTick);
         templateDirtMask.SetPixels(dirtPixels);
         templateDirtMask.Apply();
-        flagTextureUpdate = false;
     }
+
+        
     public void ClearAllDirt() {
         var renderer = GetComponent<Renderer>();
         renderer.material.SetTexture("_DirtMask", cleanTexture);
