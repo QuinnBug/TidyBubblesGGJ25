@@ -45,7 +45,6 @@ public class DirtObject : MonoBehaviour {
             templateDirtMask.SetPixels(dirtMaskBase.GetPixels());
             templateDirtMask.Apply();
             renderer.material.SetTexture("_DirtMask", templateDirtMask);
-            Debug.Log("Dirt texture applied");
         }
         totalPixels = templateDirtMask.GetPixels().Length;
         dirtPixels = templateDirtMask.GetPixels();
