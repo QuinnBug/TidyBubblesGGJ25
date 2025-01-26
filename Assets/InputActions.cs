@@ -166,7 +166,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""41e85c40-e27a-4bf7-ac43-5d96cf5165d4"",
                     ""path"": ""<Keyboard>/leftCtrl"",
-                    ""interactions"": ""MultiTap"",
+                    ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""AirSlam"",

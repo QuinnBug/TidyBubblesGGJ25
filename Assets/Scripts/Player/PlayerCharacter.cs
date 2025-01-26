@@ -148,7 +148,12 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
         };
 
         //Air Slam
-        _requestedAirSlam = input.airSlam;
+        if (input.airSlam)
+        {
+            Debug.Log("Requested Slam!");
+            _requestedAirSlam = true;
+        }
+        //_requestedAirSlam = input.airSlam;
         //var wasRequestingAirSlam = _requestedAirSlam;
         //_requestedAirSlam = _requestedAirSlam || input.airSlam;
         //if (_requestedAirSlam && !wasRequestingAirSlam)
