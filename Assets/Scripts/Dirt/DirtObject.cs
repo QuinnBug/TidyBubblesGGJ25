@@ -6,8 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(MeshCollider))]
 public class DirtObject : MonoBehaviour {
 
-    public static float CleanTick = 0.025f;
     [SerializeField] private Texture2D dirtMaskBase;
+    private int width;
+    private int height;
     [SerializeField] private Texture2D cleanTexture;
     private Texture2D templateDirtMask;
     public Texture2D Texture => templateDirtMask;
@@ -23,8 +24,10 @@ public class DirtObject : MonoBehaviour {
     private int totalPixels = 0;
     private int cleanPixels = 0;
 
-    bool flagTextureUpdate = false;
+    private Color[] dirtPixels;
 
+    private void Awake() {
+    }
     void Start() {
         CreateTexture();
     }
@@ -45,6 +48,10 @@ public class DirtObject : MonoBehaviour {
             Debug.Log("Dirt texture applied");
         }
         totalPixels = templateDirtMask.GetPixels().Length;
+        dirtPixels = templateDirtMask.GetPixels();
+        width = templateDirtMask.width;
+        height = templateDirtMask.height;
+
     }
     public Color GetColour(int pixelX, int pixelY) {
         return templateDirtMask.GetPixel(pixelX, pixelY);
@@ -53,28 +60,23 @@ public class DirtObject : MonoBehaviour {
         if (IsClean) return;
         var cleanedPixels = cleanData.GetCleanData();
         for (int i = 0; i < cleanedPixels.Count; i++) {
-            if (cleanedPixels[i].Item2.g < cleanlinessTolerance && templateDirtMask.GetPixel(cleanedPixels[i].Item1.x, cleanedPixels[i].Item1.y).g > cleanlinessTolerance) {
+            if (cleanedPixels[i].Item2.g < cleanlinessTolerance && dirtPixels[cleanedPixels[i].Item1.x * width + cleanedPixels[i].Item1.y].g > cleanlinessTolerance) {
                 cleanPixels++;
             }
-            templateDirtMask.SetPixel(cleanedPixels[i].Item1.x, cleanedPixels[i].Item1.y, cleanedPixels[i].Item2);
-        }
-        if (!flagTextureUpdate) {
-            flagTextureUpdate = true;
-            StartCoroutine(UpdateTexture());
-        } 
+            dirtPixels[cleanedPixels[i].Item1.x + width * cleanedPixels[i].Item1.y ] = cleanedPixels[i].Item2;
+            //  I really want to optimise this but it keeps throwing
+            //templateDirtMask.SetPixel(cleanedPixels[i].Item1.x, cleanedPixels[i].Item1.y, cleanedPixels[i].Item2);
 
+        }
         
         if (IsClean) {
             ClearAllDirt();
         }
+        templateDirtMask.SetPixels(dirtPixels);
+        templateDirtMask.Apply();
     }
 
-    private IEnumerator UpdateTexture() {
-        // Magic optimisation number
-        yield return new WaitForSeconds(CleanTick);
-        templateDirtMask.Apply();
-        flagTextureUpdate = false;
-    }
+        
     public void ClearAllDirt() {
         var renderer = GetComponent<Renderer>();
         renderer.material.SetTexture("_DirtMask", cleanTexture);
