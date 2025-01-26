@@ -62,6 +62,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AirSlam"",
+                    ""type"": ""Button"",
+                    ""id"": ""88e37003-31d9-45dd-b7b8-4ab05a193b8e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -155,12 +164,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""16d77322-47ef-4349-be74-29fa8ecc87f8"",
-                    ""path"": ""<Mouse>/backButton"",
-                    ""interactions"": """",
+                    ""id"": ""41e85c40-e27a-4bf7-ac43-5d96cf5165d4"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Crouch"",
+                    ""action"": ""AirSlam"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -175,6 +184,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Crouch = m_Gameplay.FindAction("Crouch", throwIfNotFound: true);
+        m_Gameplay_AirSlam = m_Gameplay.FindAction("AirSlam", throwIfNotFound: true);
     }
 
     ~@InputActions()
@@ -245,6 +255,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Crouch;
+    private readonly InputAction m_Gameplay_AirSlam;
     public struct GameplayActions
     {
         private @InputActions m_Wrapper;
@@ -253,6 +264,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Crouch => m_Wrapper.m_Gameplay_Crouch;
+        public InputAction @AirSlam => m_Wrapper.m_Gameplay_AirSlam;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -274,6 +286,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Crouch.started += instance.OnCrouch;
             @Crouch.performed += instance.OnCrouch;
             @Crouch.canceled += instance.OnCrouch;
+            @AirSlam.started += instance.OnAirSlam;
+            @AirSlam.performed += instance.OnAirSlam;
+            @AirSlam.canceled += instance.OnAirSlam;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -290,6 +305,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Crouch.started -= instance.OnCrouch;
             @Crouch.performed -= instance.OnCrouch;
             @Crouch.canceled -= instance.OnCrouch;
+            @AirSlam.started -= instance.OnAirSlam;
+            @AirSlam.performed -= instance.OnAirSlam;
+            @AirSlam.canceled -= instance.OnAirSlam;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -313,5 +331,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
+        void OnAirSlam(InputAction.CallbackContext context);
     }
 }
