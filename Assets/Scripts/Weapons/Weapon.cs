@@ -43,13 +43,11 @@ public class Weapon : MonoBehaviour
     }
     private void OnBulletHit(Bullet bullet) {
         ammo++;
-        Debug.Log("Bullet hit");
         bullet.OnMiss.RemoveListener(OnBulletMiss);
         bullet.OnHit.RemoveListener(OnBulletHit);
         bullet.OnHitDirt.RemoveListener(OnBulletHitDirt);
     }
     private void OnBulletHitDirt(Bullet bullet, DirtObject dirt, Vector2 textureCoords) {
-        Debug.Log("Bullet hit dirt");
         ammo++;
         bullet.OnMiss.RemoveListener(OnBulletMiss);
         bullet.OnHit.RemoveListener(OnBulletHit);
