@@ -91,26 +91,29 @@ public class GameManager : PersistentSingleton<GameManager>
             CameraPropsManager.Instance.QueueFace(CameraPropsManager.Face.HAPPY, 0.01f);
         }
 
-            if (voicelineTimer <= 0)
-            {
-                AudioManager.Instance.RandomVoiceLine();
-                voicelineTimer = voicelineDelayRange.RandomValue();
-            }
-            else
-            {
-                voicelineTimer -= Time.deltaTime;
-            }
+        if (voicelineTimer <= 0)
+        {
+            AudioManager.Instance.RandomVoiceLine();
+            voicelineTimer = voicelineDelayRange.RandomValue();
+        }
+        else
+        {
+            voicelineTimer -= Time.deltaTime;
         }
         var cleanedPercentage = ((float)cleanedObjects.Count / dirtystuff.Count) * 100f;
-        if (cleanedPercentage > percentageToWin) {
+        if (cleanedPercentage > percentageToWin)
+        {
             //Win;
-        }
+        } 
     }
 
-    public void PlayCleanVfx(Vector3 location) {
-        if (cleanFxPool.Find(x => !x.activeInHierarchy) != null) {
+    public void PlayCleanVfx(Vector3 location) 
+    {
+        if (cleanFxPool.Find(x => !x.activeInHierarchy) != null)
+        {
             var activeFx = cleanFxPool.Find(x => !x.activeInHierarchy);
             activeFx.transform.position = location;
+        }
         if (cleanFxPool.Find(x => !x.activeInHierarchy) != null)
         {
             var activeFx = cleanFxPool.Find(x => !x.activeInHierarchy);
@@ -118,7 +121,8 @@ public class GameManager : PersistentSingleton<GameManager>
             activeFx.SetActive(true);
         }
     }
-    public void AddCleanedObject(DirtObject dirtyObject) {
+    public void AddCleanedObject(DirtObject dirtyObject) 
+    {
         cleanedObjects.Add(dirtyObject);
         var cleanedPercentage = ((float)cleanedObjects.Count / dirtystuff.Count) * 100f;
 
