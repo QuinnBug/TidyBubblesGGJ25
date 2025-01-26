@@ -34122,7 +34122,7 @@ PrefabInstance:
     - target: {fileID: 9020500787441924271, guid: 64b9182b031dd55458fa67ed06aa9ca7, type: 3}
       propertyPath: broomLeg
       value: 
-      objectReference: {fileID: 1396802966}
+      objectReference: {fileID: 1655841390}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -88665,6 +88665,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650695690}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1655841390 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 365209437026041241, guid: 64b9182b031dd55458fa67ed06aa9ca7, type: 3}
+  m_PrefabInstance: {fileID: 669909518}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 844082bfef8270c40ad779ff9d3491db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1662301935
 Mesh:
   m_ObjectHideFlags: 0
