@@ -15,7 +15,6 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
         if (_instance == null)
         {
             _instance = (T)this;
-            DontDestroyOnLoad(_instance);
         }
         else if (_instance != this)
         {

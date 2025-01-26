@@ -10,6 +10,8 @@ public class Bullet : MonoBehaviour {
     public UnityEvent<Bullet, DirtObject, Vector2> OnHitDirt;
     private float lifetime = 3.5f;
     public Rigidbody Rb;
+    [Space]
+    public ParticleSystem bubbles;
 
     [SerializeField] private float rayDeviation = 0.8f;
     private Vector3 deviation;
@@ -45,7 +47,15 @@ public class Bullet : MonoBehaviour {
             }
         }
         else OnHit.Invoke(this);
+
+        SpawnParticles(collision.GetContact(0).point);
         Destroy(gameObject);
     }
 
+    void SpawnParticles(Vector3 pos) 
+    {
+        ParticleSystem ps = Instantiate<ParticleSystem>(bubbles);
+        ps.transform.position = pos;
+        Destroy(ps.gameObject, ps.main.startLifetime.constantMax);
+    }
 }
