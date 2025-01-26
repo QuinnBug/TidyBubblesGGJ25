@@ -1251,7 +1251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7480783110652917342, guid: c3ffbaede61949d4288159ffccc8571d, type: 3}
       propertyPath: ammo
-      value: 6
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7480783110652917342, guid: c3ffbaede61949d4288159ffccc8571d, type: 3}
       propertyPath: fireRate
