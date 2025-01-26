@@ -140,7 +140,12 @@ public class CameraPropsManager : Singleton<CameraPropsManager>
 
     public void AddScreenShake(float value) 
     {
-        shakeIntensity = Mathf.Clamp(shakeIntensity + value, 0, shakeMaxIntensity);
+        SetScreenShake(shakeIntensity + value);
+    }
+
+    public void SetScreenShake(float value)
+    {
+        shakeIntensity = Mathf.Clamp(value, 0, shakeMaxIntensity);
         if (!shakingScreen) { StartCoroutine(ScreenShaking()); }
     }
 

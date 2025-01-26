@@ -21,6 +21,10 @@ public class AudioManager : PersistentSingleton<AudioManager>
 
     private void Start()
     {
+        for (int i = 0; i < voClips.Length; i++)
+        {
+            voClipOptions.Add(i);
+        }
         fxSources = new Pool(transform, fxSourcePrefab, 5);
     }
 
@@ -53,9 +57,9 @@ public class AudioManager : PersistentSingleton<AudioManager>
 
     void UpdateMusicLevel() 
     {
-        musicLevel = Mathf.Clamp(musicLevel, -1, 2);
+        musicLevel = Mathf.Clamp(musicLevel, -1, gameAudio.TrackCount);
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < gameAudio.TrackCount; ++i)
         {
             SetMusicLayer(i, musicLevel >= i);
         }
@@ -63,18 +67,19 @@ public class AudioManager : PersistentSingleton<AudioManager>
 
     public void RandomVoiceLine() 
     {
+        int idx = voClipOptions[Random.Range(0, voClipOptions.Count)];
+        voClipOptions.Remove(idx);
+
         if (voClipOptions.Count == 0)
         {
             voClipOptions.Clear();
             for (int i = 0; i < voClips.Length; i++)
             {
-                voClipOptions.Add(i);
+                if(idx != i) voClipOptions.Add(i);
             }
         }
 
-        int idx = Random.Range(0, voClipOptions.Count);
-        PlayVoiceLine(voClipOptions[idx]);
-        voClipOptions.Remove(idx);
+        PlayVoiceLine(idx);
     }
 
     void PlayFXOneShot(int fxIndex, bool randomPitch) 
