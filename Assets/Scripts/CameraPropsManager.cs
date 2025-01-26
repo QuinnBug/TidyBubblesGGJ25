@@ -8,6 +8,12 @@ using UnityEngine.UI;
 
 public class CameraPropsManager : Singleton<CameraPropsManager>
 {
+    [Tooltip("Gun")]
+    public Transform gunTF;
+    public float verticalRecoil = 0.1f;
+    public float recoilRecoveryRate = 0.5f;
+    private Quaternion gunDefaultRot;
+    [Space]
     [Tooltip("The Face")]
     public RawImage faceImage;
     public Texture2D[] faceTxtrs;
@@ -26,9 +32,11 @@ public class CameraPropsManager : Singleton<CameraPropsManager>
     public float shakeStrength;
     public float shakeDrag;
     public float shakeMaxIntensity;
+    public float shakeRefreshDelay;
     public FloatRange shakeRange;
     public Transform screenShakeTF;
 
+    private Vector3 screenShakeTFDefaultPos;
     private bool shakingScreen = false;
     private float shakeIntensity;
     Vector2[] shakeDirections = 
@@ -37,7 +45,8 @@ public class CameraPropsManager : Singleton<CameraPropsManager>
 
     void Start()
     {
-        //QueueFace(Face.HAPPY, 5);
+        screenShakeTFDefaultPos = screenShakeTF.localPosition;
+        gunDefaultRot = gunTF.localRotation;
     }
 
     private void Update()
@@ -49,12 +58,31 @@ public class CameraPropsManager : Singleton<CameraPropsManager>
 
         if (Keyboard.current.leftArrowKey.wasPressedThisFrame)
         {
-            QueueFace(Face.TALKING, 0.25f);
-            QueueFace(Face.NEUTRAL, 0.1f);
+            QueueFace(Face.TALKING, 0.1f);
+            QueueFace(Face.NEUTRAL, 0.01f);
         }
 
+        RecoilRecovery();
     }
     
+    public void Recoil() 
+    {
+        gunTF.localRotation = gunDefaultRot;
+        gunTF.Rotate(verticalRecoil, 0, 0);
+    }
+
+    private void RecoilRecovery() 
+    {
+        if (gunTF.localRotation != gunDefaultRot)
+        {
+            gunTF.localRotation = Quaternion.Lerp(gunTF.localRotation, gunDefaultRot, recoilRecoveryRate);
+            if (Quaternion.Angle(gunTF.localRotation, gunDefaultRot) < 1)
+            {
+                gunTF.localRotation = gunDefaultRot;
+            }
+        }
+    }
+
     public void QueueFace(Face newFace, float duration, bool purgeQueue = false) 
     {
         if (purgeQueue)
@@ -79,11 +107,9 @@ public class CameraPropsManager : Singleton<CameraPropsManager>
     {
         changingFace = true;
         FaceChange nextChange;
-        Debug.Log("Hello 2");
         while (faceQueue.TryDequeue(out nextChange)) 
         {
             faceImage.texture = faceTxtrs[(int)nextChange.face];
-            Debug.Log("Hello 3");
 
             yield return new WaitForSeconds(nextChange.duration);
         }
@@ -110,7 +136,7 @@ public class CameraPropsManager : Singleton<CameraPropsManager>
             }
             else
             {
-                screenShakeTF.transform.localPosition = Vector3.zero;
+                screenShakeTF.transform.localPosition = screenShakeTFDefaultPos;
                 doShakeOut = true;
             }
 
@@ -118,10 +144,10 @@ public class CameraPropsManager : Singleton<CameraPropsManager>
             if (shakeIntensity <= 0.1f) { shakeIntensity = 0; }
 
             QueueFace(Face.SAD, 0.1f, true);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(shakeRefreshDelay);
         }
 
-        screenShakeTF.transform.localPosition = Vector3.zero;
+        screenShakeTF.transform.localPosition = screenShakeTFDefaultPos;
         shakingScreen = false;
     }
 }

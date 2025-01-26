@@ -40,6 +40,8 @@ public class Weapon : MonoBehaviour
         newBullet.transform.forward = transform.right;
 
         newBullet.Launch(30);
+
+        CameraPropsManager.Instance.Recoil();
     }
     private void OnBulletHit(Bullet bullet) {
         ammo++;
