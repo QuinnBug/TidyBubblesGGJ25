@@ -790,6 +790,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2922738914873267805}
   - component: {fileID: 365209437026041241}
+  - component: {fileID: 3950857010940993465}
+  - component: {fileID: 7883070447949155736}
+  - component: {fileID: 5277987676330697050}
   m_Layer: 6
   m_Name: FloorCleaner
   m_TagString: Untagged
@@ -829,6 +832,51 @@ MonoBehaviour:
   playerCharacter: {fileID: 9020500787441924271}
   walkingBrush: {fileID: 1445576406281484759}
   slidingBrush: {fileID: 251750279563594139}
+  floorSlamSoft: {fileID: 0}
+  floorSlamMed: {fileID: 0}
+  floorSlamHard: {fileID: 0}
+--- !u!114 &3950857010940993465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035883990493765926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d772a735b3ebe48ad202fd85c0de61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brushData: {fileID: 0}
+  BrushSize: {x: 0, y: 0}
+--- !u!114 &7883070447949155736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035883990493765926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d772a735b3ebe48ad202fd85c0de61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brushData: {fileID: 0}
+  BrushSize: {x: 0, y: 0}
+--- !u!114 &5277987676330697050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035883990493765926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d772a735b3ebe48ad202fd85c0de61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brushData: {fileID: 0}
+  BrushSize: {x: 0, y: 0}
 --- !u!1 &6153265205227708822
 GameObject:
   m_ObjectHideFlags: 0
