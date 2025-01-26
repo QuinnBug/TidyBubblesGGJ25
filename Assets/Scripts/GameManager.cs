@@ -2,8 +2,12 @@ using UnityEngine;
 
 public class GameManager : PersistentSingleton<GameManager>
 {
+    [Tooltip("Game Values")]
+    public float[] speedBoundaries;
     SceneId currentScene;
     PlayerCharacter player;
+    float playerSpeed = 0;
+    int intensityLevel = 0;
 
     private void Start()
     {
@@ -28,6 +32,7 @@ public class GameManager : PersistentSingleton<GameManager>
         switch (currentScene)
         {
             case SceneId.MENU:
+                AudioManager.Instance.SetMusicLevel(-1);
                 break;
             case SceneId.GAME:
                 GameUpdate();
@@ -42,6 +47,22 @@ public class GameManager : PersistentSingleton<GameManager>
 
     void GameUpdate() 
     {
-        CameraPropsManager.Instance.SetSpeed(player.CurrentState.Velocity.magnitude);
+        playerSpeed = player.CurrentState.Velocity.magnitude;
+        CameraPropsManager.Instance.SetSpeed(playerSpeed);
+
+        intensityLevel = -1;
+        foreach (var item in speedBoundaries)
+        {
+            if (playerSpeed >= item)
+            {
+                intensityLevel++;
+            }
+        }
+
+        AudioManager.Instance.SetMusicLevel(intensityLevel);
+        if (intensityLevel >= 1)
+        {
+            CameraPropsManager.Instance.QueueFace(CameraPropsManager.Face.HAPPY, 0.01f);
+        }
     }
 }
