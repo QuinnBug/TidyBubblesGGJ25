@@ -8,6 +8,13 @@ using UnityEngine.UI;
 
 public class CameraPropsManager : Singleton<CameraPropsManager>
 {
+    [Tooltip("SpeedDisplay")]
+    public FloatRange speedBarRange;
+    public Image speedImage;
+    public float speedBarLerpSpeed;
+    private float speedValue;
+    private float targetSpeedValue;
+    [Space]
     [Tooltip("Gun")]
     public Transform gunTF;
     public float verticalRecoil = 0.1f;
@@ -15,8 +22,8 @@ public class CameraPropsManager : Singleton<CameraPropsManager>
     private Quaternion gunDefaultRot;
     [Space]
     [Tooltip("The Face")]
-    public RawImage faceImage;
-    public Texture2D[] faceTxtrs;
+    public Image faceImage;
+    public Sprite[] faceTxtrs;
     public Color damageColour;
     private bool changingFace = false;
     public enum Face { HAPPY, NEUTRAL, TALKING, SAD }
@@ -27,6 +34,7 @@ public class CameraPropsManager : Singleton<CameraPropsManager>
         public FaceChange(Face _face, float _duration) { face = _face; duration = _duration; }
     }
     private Queue<FaceChange> faceQueue = new Queue<FaceChange>();
+    bool queueLock = false;
     [Space]
     [Tooltip("Camera Shake")]
     public float shakeStrength;
@@ -58,17 +66,31 @@ public class CameraPropsManager : Singleton<CameraPropsManager>
 
         if (Keyboard.current.leftArrowKey.wasPressedThisFrame)
         {
-            QueueFace(Face.TALKING, 0.1f);
-            QueueFace(Face.NEUTRAL, 0.01f);
+            StartTalking(10);
         }
 
         RecoilRecovery();
+        SpeedBarUpdate();
     }
-    
+
+    public void SetSpeed(float _speed) 
+    {
+        targetSpeedValue = _speed;
+    }
+
     public void Recoil() 
     {
         gunTF.localRotation = gunDefaultRot;
         gunTF.Rotate(verticalRecoil, 0, 0);
+    }
+
+    private void SpeedBarUpdate() 
+    {
+        if (speedValue != targetSpeedValue)
+        {
+            speedValue = Mathf.Lerp(speedValue, targetSpeedValue, speedBarLerpSpeed * Time.deltaTime);
+        }
+        speedImage.fillAmount = speedBarRange.ValueAsPercent(speedValue);
     }
 
     private void RecoilRecovery() 
@@ -83,11 +105,18 @@ public class CameraPropsManager : Singleton<CameraPropsManager>
         }
     }
 
-    public void QueueFace(Face newFace, float duration, bool purgeQueue = false) 
+    public void QueueFace(Face newFace, float duration, bool lockQueue = false, bool purgeQueue = false) 
     {
+        if (queueLock) return;
+
         if (purgeQueue)
         {
             faceQueue.Clear();
+        }
+
+        if (lockQueue) 
+        {
+            queueLock = true;
         }
 
         faceQueue.Enqueue(new FaceChange(newFace, duration));
@@ -95,6 +124,18 @@ public class CameraPropsManager : Singleton<CameraPropsManager>
         {
             StartCoroutine(FaceChanging());
         }
+    }
+
+    public void StartTalking(int loops) 
+    {
+        --loops;
+        QueueFace(Face.TALKING, 0, false, true);
+        for (int i = 0; i < loops; i++)
+        {
+            QueueFace(Face.NEUTRAL, 0);
+            QueueFace(Face.TALKING, 0.01f);
+        }
+        QueueFace(Face.NEUTRAL, 0, true);
     }
 
     public void AddScreenShake(float value) 
@@ -109,13 +150,14 @@ public class CameraPropsManager : Singleton<CameraPropsManager>
         FaceChange nextChange;
         while (faceQueue.TryDequeue(out nextChange)) 
         {
-            faceImage.texture = faceTxtrs[(int)nextChange.face];
+            faceImage.sprite = faceTxtrs[(int)nextChange.face];
 
             yield return new WaitForSeconds(nextChange.duration);
         }
-        faceImage.texture = faceTxtrs[(int)Face.NEUTRAL];
+        faceImage.sprite = faceTxtrs[(int)Face.NEUTRAL];
 
         changingFace = false;
+        queueLock = false;
     }
 
     IEnumerator ScreenShaking()
@@ -143,7 +185,7 @@ public class CameraPropsManager : Singleton<CameraPropsManager>
             shakeIntensity *= shakeDrag;
             if (shakeIntensity <= 0.1f) { shakeIntensity = 0; }
 
-            QueueFace(Face.SAD, 0.1f, true);
+            QueueFace(Face.SAD, shakeRefreshDelay * 1.25f, false, true);
             yield return new WaitForSeconds(shakeRefreshDelay);
         }
 

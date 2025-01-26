@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a16ec198700d38342be248bae6334d31
+guid: e544ee78904d8584896ce8fe154239dd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -97,23 +97,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: button_rectangle_depth_gloss_0
+      name: HappyJohn2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 192
-        height: 64
+        width: 160
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 4, y: 8, z: 4, w: 4}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04fb43a2e64c32746a673eead81f71c6
-      internalID: 2085535421
+      spriteID: 6528e993052ae7348be1b8364794b6d7
+      internalID: -527315774
       vertices: []
       indices: 
       edges: []
@@ -122,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a6648e9afa6837c418b6b84e7b7447d8
+    spriteID: de82e8b339c0e244480c6a34cd88caf1
     internalID: 0
     vertices: []
     indices: 
@@ -132,7 +132,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      button_rectangle_depth_gloss_0: 2085535421
+      HappyJohn2_0: -527315774
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
