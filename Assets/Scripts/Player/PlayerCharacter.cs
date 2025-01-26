@@ -559,6 +559,7 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
             {
                 slamStrength = SlamStrength.Hard;
             }
+            CameraPropsManager.Instance.AddScreenShake(fallSpeed);
             Debug.Log("Slam Hit: " + slamStrength);
             //broomLeg.ShitOnFloor(slamStrength);
 
