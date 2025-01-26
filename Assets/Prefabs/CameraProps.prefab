@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 3906949933042333046}
   - component: {fileID: 670065559222355050}
   - component: {fileID: 383472559811271003}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,8 +171,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091603730452131922}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 100}
-  m_LocalScale: {x: 0.10691672, y: 0.10691672, z: 0.10691672}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 0.00107, y: 0.00107, z: 0.00107}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6056844558207551219}
@@ -183,7 +183,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920.0001, y: 1080}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3906949933042333046
 Canvas:
@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 8360253700815441914}
   - component: {fileID: 1625968766192657479}
   - component: {fileID: 5225507097726075236}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,8 +430,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -399.67, y: 466.76}
-  m_SizeDelta: {x: 38.219, y: 676.52}
+  m_AnchoredPosition: {x: -404.67, y: 466.76}
+  m_SizeDelta: {x: 48.222, y: 676.52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5887226239994543908
 CanvasRenderer:
@@ -557,7 +557,7 @@ GameObject:
   - component: {fileID: 3264526585523420735}
   - component: {fileID: 4713365021329060240}
   - component: {fileID: 8355086526964298346}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -693,7 +693,7 @@ GameObject:
   - component: {fileID: 8366837136150680622}
   - component: {fileID: 2116613881794667729}
   - component: {fileID: 7266351951247278985}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -916,7 +916,7 @@ GameObject:
   - component: {fileID: 7617782717876298024}
   - component: {fileID: 2574408823679846560}
   - component: {fileID: 2709403368922067128}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Border 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1255,7 +1255,7 @@ GameObject:
   - component: {fileID: 7873932397104002052}
   - component: {fileID: 5881154722973725146}
   - component: {fileID: 5831541237681907478}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Border 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1399,7 +1399,7 @@ GameObject:
   - component: {fileID: 5925929091928559891}
   - component: {fileID: 3230171870923737033}
   - component: {fileID: 7660808988214045695}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1614,7 +1614,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7298432833145696155}
   - component: {fileID: 9136361365177998811}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CameraProps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1652,12 +1652,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedBarRange:
     min: 0
-    max: 50
+    max: 40
   speedImage: {fileID: 5093482303589005216}
   speedBarLerpSpeed: 1.5
   gunTF: {fileID: 9061116411683204037}
-  verticalRecoil: 0.1
-  recoilRecoveryRate: 0.5
+  verticalRecoil: 30
+  recoilRecoveryRate: 0.05
   faceImage: {fileID: 5225507097726075236}
   faceTxtrs:
   - {fileID: 21300000, guid: e544ee78904d8584896ce8fe154239dd, type: 3}
@@ -1665,14 +1665,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f169905f1ac7bc649b942ecfc45245cc, type: 3}
   - {fileID: 21300000, guid: 05efad1c5a406284d9596071a8c74bf6, type: 3}
   damageColour: {r: 0, g: 0, b: 0, a: 0}
-  shakeStrength: 5
+  shakeStrength: 0.1
   shakeDrag: 0.95
   shakeMaxIntensity: 2
   shakeRefreshDelay: 0
   shakeRange:
     min: 0.01
-    max: 999
-  screenShakeTF: {fileID: 8847940012115624144}
+    max: 2
+  screenShakeTF: {fileID: 0}
 --- !u!1 &5060182341305273647
 GameObject:
   m_ObjectHideFlags: 0
@@ -1756,7 +1756,7 @@ GameObject:
   - component: {fileID: 7184239179874510387}
   - component: {fileID: 8337553809503692231}
   - component: {fileID: 593234976998673307}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Border 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1900,7 +1900,7 @@ GameObject:
   - component: {fileID: 1255941250115212298}
   - component: {fileID: 8190680898729619818}
   - component: {fileID: 7185220111053397799}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2044,7 +2044,7 @@ GameObject:
   - component: {fileID: 9105695326208163222}
   - component: {fileID: 8459037601695702262}
   - component: {fileID: 8043277559632611579}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Border 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2258,7 +2258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6056844558207551219}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ScoreDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2444,7 +2444,7 @@ GameObject:
   - component: {fileID: 670568484493238219}
   - component: {fileID: 1885733328015870307}
   - component: {fileID: 1899158351405892852}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Bubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2516,7 +2516,7 @@ GameObject:
   - component: {fileID: 8635097897219795589}
   - component: {fileID: 8124292735106609685}
   - component: {fileID: 8682731694149900785}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2661,7 +2661,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9061116411683204037}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2912,7 +2912,7 @@ GameObject:
   - component: {fileID: 1106619172427831672}
   - component: {fileID: 1537011335262436111}
   - component: {fileID: 3285971017557977257}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2991,7 +2991,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7306456653743141519}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: FaceDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3116,6 +3116,10 @@ PrefabInstance:
       value: blasterG
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 64e36a6a21cea554cbbf8876c5aa98ed, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 64e36a6a21cea554cbbf8876c5aa98ed, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -3180,6 +3184,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5802430f9072e764d8e9705640e7a4a4, type: 3}
       propertyPath: m_Name
       value: blasterD
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5802430f9072e764d8e9705640e7a4a4, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5802430f9072e764d8e9705640e7a4a4, type: 3}
       propertyPath: m_IsActive

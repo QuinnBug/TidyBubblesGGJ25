@@ -9,10 +9,11 @@ public class GameManager : PersistentSingleton<GameManager>
     PlayerCharacter player;
     float playerSpeed = 0;
     int intensityLevel = 0;
-    float voicelineTimer = 1;
+    float voicelineTimer;
 
     private void Start()
     {
+        voicelineTimer = voicelineDelayRange.Min;
         SceneHandler.OnSceneChange += OnSceneLoaded;
     }
 
