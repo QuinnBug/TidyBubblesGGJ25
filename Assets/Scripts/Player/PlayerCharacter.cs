@@ -154,7 +154,7 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
         };
 
         //Air Slam
-        if (input.airSlam)
+        if (input.airSlam && !_usedAirSlam && !motor.GroundingStatus.IsStableOnGround)
         {
             Debug.Log("Requested Slam!");
             _requestedAirSlam = true;
@@ -555,7 +555,7 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
             {
                 slamStrength = SlamStrength.Medium;
             }
-            else
+            else if (fallSpeed >= mediumSlamTreshold && fallSpeed <= 1f)
             {
                 slamStrength = SlamStrength.Hard;
             }
