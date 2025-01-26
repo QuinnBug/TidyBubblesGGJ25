@@ -9,7 +9,7 @@ public enum CrouchInput
 
 public enum Stance
 {
-    Stand, Crouch, Slide
+    Stand, Crouch, Slide, Slam
 }
 
 public struct CharacterState
@@ -31,6 +31,8 @@ public struct CharacterInput
     public bool JumpSustain;
 
     public CrouchInput Crouch;
+
+    public bool airSlam;
 }
 
 
@@ -39,13 +41,14 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     [SerializeField] private KinematicCharacterMotor motor;
     [SerializeField] private Transform root;
     [SerializeField] private Transform cameraTarget;
+    [SerializeField] private BroomLeg broomLeg;
     [Space]
     [SerializeField] private float walkSpeed = 20f;
     [SerializeField] private float crouchSpeed = 7f;
     [Space]
     [SerializeField] private float jumpSpeed = 20f;
     [SerializeField] private float coyoteTime = 0.2f;
-    [Range(0f,1f)]
+    [Range(0f, 1f)]
     [SerializeField] private float jumpSustainGravity = 0.4f;
     [SerializeField] private float gravity = -90f;
     [Space]
@@ -54,6 +57,9 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     [SerializeField] private float slideFriction = 0.8f;
     [SerializeField] private float slideSteerAcceleration = 5f;
     [SerializeField] private float slideGravity = -90f;
+    [Space]
+    [SerializeField] private float slamTime = 0.2f;
+    [SerializeField] private float airSlamSpeed = 30f;
     [Space]
     [SerializeField] private float standHeight = 2f;
     [SerializeField] private float crouchHeight = 1f;
@@ -94,9 +100,17 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
 
     private bool _requestedCrouchInAir;
 
+    private bool _requestedAirSlam;
+
+    private bool _usedAirSlam;
+
     private float _timeSinceUngrounded;
 
     private float _timeSinceJumpRequest;
+
+    private float _timeSinceCrouchRequest;
+
+    private float _timeSinceAirSlamRequest;
 
     private bool _ungroundedDueToJump;
 
@@ -126,8 +140,6 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
             _timeSinceJumpRequest = 0f;
         }
 
-
-
         _requestedSustainedJump = input.JumpSustain;
 
         var wasRequestingCrouch = _requestedCrouch;
@@ -138,9 +150,25 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
             _ => _requestedCrouch
         };
 
+        //Air Slam
+        if (input.airSlam)
+        {
+            Debug.Log("Requested Slam!");
+            _requestedAirSlam = true;
+        }
+        //_requestedAirSlam = input.airSlam;
+        //var wasRequestingAirSlam = _requestedAirSlam;
+        //_requestedAirSlam = _requestedAirSlam || input.airSlam;
+        //if (_requestedAirSlam && !wasRequestingAirSlam)
+        //{
+        //    _requestedAirSlam = false;
+        //    _timeSinceAirSlamRequest = 0f;
+        //}
+
         if (_requestedCrouch && !wasRequestingCrouch)
         {
             _requestedCrouchInAir = !_state.Grounded;
+            _timeSinceCrouchRequest = 0f;
         }
         else if (!_requestedCrouch && wasRequestingCrouch)
         {
@@ -440,6 +468,7 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
                
             }
             //Gravity
+
             var effectiveGravity = gravity;
             var verticalSpeed = Vector3.Dot(currentVelocity, motor.CharacterUp);
             if (_requestedSustainedJump && verticalSpeed > 0f)
@@ -447,6 +476,16 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
                 effectiveGravity *= jumpSustainGravity;
             }
             currentVelocity += deltaTime * effectiveGravity * motor.CharacterUp;
+
+            //Air Slam
+            if (_requestedAirSlam && !_usedAirSlam)
+            {
+                _requestedAirSlam = false;
+                _usedAirSlam = true;
+
+                currentVelocity = motor.CharacterUp * airSlamSpeed;
+                Debug.Log("SLAM!!");
+            }
         }
 
         if (_requestedJump)
@@ -498,6 +537,14 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
 
     public void OnGroundHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
     {
+        if (_usedAirSlam)
+        {
+            _usedAirSlam = false;
+            Debug.Log("Slam Hit");
+            broomLeg.ShitOnFloor(SlamStrength.Hard);
+
+        }
+
     }
 
     public void OnMovementHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)

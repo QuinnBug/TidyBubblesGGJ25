@@ -60,6 +60,7 @@ public class Player : MonoBehaviour
             Jump = input.Jump.WasPressedThisFrame(),
             JumpSustain = input.Jump.IsPressed(),
             Crouch = input.Crouch.IsPressed() ? CrouchInput.Toggle : CrouchInput.None,
+            airSlam = input.AirSlam.triggered,
         };
         playerCharacter.UpdateInput(characterInput);
         playerCharacter.updateBody(deltaTime);

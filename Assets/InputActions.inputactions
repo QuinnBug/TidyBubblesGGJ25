@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "AirSlam",
+                    "type": "Button",
+                    "id": "88e37003-31d9-45dd-b7b8-4ab05a193b8e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -133,12 +142,12 @@
                 },
                 {
                     "name": "",
-                    "id": "16d77322-47ef-4349-be74-29fa8ecc87f8",
-                    "path": "<Mouse>/backButton",
-                    "interactions": "",
+                    "id": "41e85c40-e27a-4bf7-ac43-5d96cf5165d4",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "",
-                    "action": "Crouch",
+                    "action": "AirSlam",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
