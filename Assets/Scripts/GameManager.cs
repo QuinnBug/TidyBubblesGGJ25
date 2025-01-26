@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -19,6 +20,8 @@ public class GameManager : PersistentSingleton<GameManager>
     private List<GameObject> cleanFxPool = new();
 
     private List<GameObject> dirtystuff = new();
+    private List<DirtObject> cleanedObjects = new();
+    [SerializeField] private int percentageToWin = 80;
 
     private void Start()
     {
@@ -40,6 +43,9 @@ public class GameManager : PersistentSingleton<GameManager>
                 newFx.SetActive(false);
                 cleanFxPool.Add(newFx);
             }
+            GameObject[] dirtObjects = GameObject.FindGameObjectsWithTag("Dirt");
+            dirtystuff = dirtObjects.ToList();
+            Debug.Log($"Found {dirtystuff.Count} dirty objects.");
         }
         else
         {
@@ -85,22 +91,29 @@ public class GameManager : PersistentSingleton<GameManager>
             CameraPropsManager.Instance.QueueFace(CameraPropsManager.Face.HAPPY, 0.01f);
         }
 
-            if (voicelineTimer <= 0)
-            {
-                AudioManager.Instance.RandomVoiceLine();
-                voicelineTimer = voicelineDelayRange.RandomValue();
-            }
-            else
-            {
-                voicelineTimer -= Time.deltaTime;
-            }
+        if (voicelineTimer <= 0)
+        {
+            AudioManager.Instance.RandomVoiceLine();
+            voicelineTimer = voicelineDelayRange.RandomValue();
         }
+        else
+        {
+            voicelineTimer -= Time.deltaTime;
+        }
+        var cleanedPercentage = ((float)cleanedObjects.Count / dirtystuff.Count) * 100f;
+        if (cleanedPercentage > percentageToWin)
+        {
+            //Win;
+        } 
     }
 
-    public void PlayCleanVfx(Vector3 location) {
-        if (cleanFxPool.Find(x => !x.activeInHierarchy) != null) {
+    public void PlayCleanVfx(Vector3 location) 
+    {
+        if (cleanFxPool.Find(x => !x.activeInHierarchy) != null)
+        {
             var activeFx = cleanFxPool.Find(x => !x.activeInHierarchy);
             activeFx.transform.position = location;
+        }
         if (cleanFxPool.Find(x => !x.activeInHierarchy) != null)
         {
             var activeFx = cleanFxPool.Find(x => !x.activeInHierarchy);
@@ -108,4 +121,13 @@ public class GameManager : PersistentSingleton<GameManager>
             activeFx.SetActive(true);
         }
     }
+    public void AddCleanedObject(DirtObject dirtyObject) 
+    {
+        cleanedObjects.Add(dirtyObject);
+        var cleanedPercentage = ((float)cleanedObjects.Count / dirtystuff.Count) * 100f;
+
+        Debug.Log($"Object has been cleaned. You are {cleanedPercentage} complete cleaning.");
+
+    }
+
 }

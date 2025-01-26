@@ -548,17 +548,21 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
             fallSpeed = (fallSpeed - 30) / (87 - 30);
             _usedAirSlam = false;
             var slamStrength = SlamStrength.Soft;
+            var splashSoundIndex = 1;
             if (fallSpeed > 0 && fallSpeed < softSlamTreshold)
             {
                 slamStrength = SlamStrength.Soft;
+                splashSoundIndex = 1;
             }
             else if (fallSpeed >= softSlamTreshold && fallSpeed < mediumSlamTreshold)
             {
                 slamStrength = SlamStrength.Medium;
+                splashSoundIndex = 2;
             }
             else if (fallSpeed >= mediumSlamTreshold && fallSpeed <= 1f)
             {
                 slamStrength = SlamStrength.Hard;
+                splashSoundIndex = 3;
             }
             CameraPropsManager.Instance.AddScreenShake(fallSpeed);
             Debug.Log("Slam Hit: " + slamStrength);
