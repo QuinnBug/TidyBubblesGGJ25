@@ -60,6 +60,9 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     [Space]
     [SerializeField] private float slamTime = 0.2f;
     [SerializeField] private float airSlamSpeed = 30f;
+    [SerializeField] private float softSlamTreshold = 0.3f;
+    [SerializeField] private float mediumSlamTreshold = 0.6f;
+    [SerializeField] private float hardSlamTreshold = 0.9f;
     [Space]
     [SerializeField] private float standHeight = 2f;
     [SerializeField] private float crouchHeight = 1f;
@@ -539,9 +542,26 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     {
         if (_usedAirSlam)
         {
+            var fallSpeed = _lastState.Velocity.y;
+            fallSpeed = Mathf.Abs(fallSpeed);
+            fallSpeed = (fallSpeed - 30) / (87 - 30);
             _usedAirSlam = false;
-            Debug.Log("Slam Hit");
-            broomLeg.ShitOnFloor(SlamStrength.Hard);
+            var slamStrength = SlamStrength.Soft;
+            if (fallSpeed > 0 && fallSpeed < softSlamTreshold)
+            {
+                slamStrength = SlamStrength.Soft;
+            }
+            else if (fallSpeed >= softSlamTreshold && fallSpeed < mediumSlamTreshold)
+            {
+                slamStrength = SlamStrength.Medium;
+            }
+            else
+            {
+                slamStrength = SlamStrength.Hard;
+            }
+            CameraPropsManager.Instance.AddScreenShake(fallSpeed);
+            Debug.Log("Slam Hit: " + slamStrength);
+            //broomLeg.ShitOnFloor(slamStrength);
 
         }
 

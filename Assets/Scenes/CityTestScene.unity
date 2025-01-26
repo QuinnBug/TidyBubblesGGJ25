@@ -650,6 +650,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerFinal
       objectReference: {fileID: 0}
+    - target: {fileID: 9020500787441924271, guid: 64b9182b031dd55458fa67ed06aa9ca7, type: 3}
+      propertyPath: broomLeg
+      value: 
+      objectReference: {fileID: 1396802966}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1519,6 +1523,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: fc69d10298fdda0409c92918930ad704, type: 3}
+--- !u!114 &1396802966 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 365209437026041241, guid: 64b9182b031dd55458fa67ed06aa9ca7, type: 3}
+  m_PrefabInstance: {fileID: 669909518}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 844082bfef8270c40ad779ff9d3491db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1615941855
 PrefabInstance:
   m_ObjectHideFlags: 0
