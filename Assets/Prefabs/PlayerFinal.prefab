@@ -826,7 +826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 844082bfef8270c40ad779ff9d3491db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCharacter: {fileID: 0}
+  playerCharacter: {fileID: 9020500787441924271}
   walkingBrush: {fileID: 1445576406281484759}
   slidingBrush: {fileID: 251750279563594139}
 --- !u!1 &6153265205227708822
@@ -1357,6 +1357,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9136361365177998811, guid: 0e9a007801c93e44f9c5f2a632e00e89, type: 3}
+      propertyPath: gunTF
+      value: 
+      objectReference: {fileID: 9164394485996956815}
     - target: {fileID: 9136361365177998811, guid: 0e9a007801c93e44f9c5f2a632e00e89, type: 3}
       propertyPath: screenShakeTF
       value: 

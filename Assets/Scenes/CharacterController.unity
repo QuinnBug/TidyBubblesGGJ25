@@ -919,6 +919,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1eaf41e98093bdc46be0a57812c5788c, type: 3}
+--- !u!114 &1789504149 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9020500787441924271, guid: 64b9182b031dd55458fa67ed06aa9ca7, type: 3}
+  m_PrefabInstance: {fileID: 741835739697489260}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4df08ac0a8118f049b947a0d2eb38f0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1833921242 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3195833278464871502, guid: 9d196222f0180664d86ae3ee5a69b768, type: 3}
@@ -1264,7 +1275,7 @@ PrefabInstance:
     - target: {fileID: 365209437026041241, guid: 64b9182b031dd55458fa67ed06aa9ca7, type: 3}
       propertyPath: playerCharacter
       value: 
-      objectReference: {fileID: 640634592}
+      objectReference: {fileID: 1789504149}
     - target: {fileID: 4938078811695510103, guid: 64b9182b031dd55458fa67ed06aa9ca7, type: 3}
       propertyPath: ammo
       value: 6
