@@ -88,6 +88,8 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
 
     private bool _requestedSustainedJump;
 
+    private bool _canDoubleJump;
+
     private bool _requestedCrouch;
 
     private bool _requestedCrouchInAir;
@@ -260,6 +262,7 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
         if (motor.GroundingStatus.IsStableOnGround)
         {
             _timeSinceUngrounded = 0f;
+            _canDoubleJump = true;
             _ungroundedDueToJump = false;
             // Snap the requested movement direction to the angle of the surface
             // the character is currently walking on.
@@ -468,6 +471,18 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
             }
             else
             {
+                if (_canDoubleJump)
+                {
+                    _requestedJump = false;
+                    _requestedCrouch = false;
+                    _requestedCrouchInAir = false;
+                    _canDoubleJump = false;
+                    //set minimum vertical speed to jump speed
+                    var currentVerticalSpeed = Vector3.Dot(currentVelocity, motor.CharacterUp);
+                    var targetVerticalSpeed = Mathf.Max(currentVerticalSpeed, jumpSpeed);
+                    //Add the difference
+                    currentVelocity += motor.CharacterUp * (targetVerticalSpeed - currentVerticalSpeed);
+                }
                 //Coyote time jump calculations
                 _timeSinceJumpRequest += deltaTime;
                 var canJumpLater = _timeSinceJumpRequest < coyoteTime;

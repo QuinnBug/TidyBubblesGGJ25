@@ -57,9 +57,9 @@ MonoBehaviour:
   coyoteTime: 0.2
   jumpSustainGravity: 0.4
   gravity: -90
-  slideStartSpeed: 25
+  slideStartSpeed: 35
   slideEndSpeed: 15
-  slideFriction: 0.8
+  slideFriction: 0.6
   slideSteerAcceleration: 5
   slideGravity: -90
   standHeight: 2
@@ -742,8 +742,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af2232f65ac41b499c3ad1ae224aa2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  min: 0.1
-  max: 0.35
+  min: 0.2
+  max: 0.5
   response: 10
 --- !u!1 &6961488454942822283
 GameObject:
@@ -793,7 +793,7 @@ MonoBehaviour:
   attackDamping: 0.5
   decayDamping: 0.3
   walkStrength: 0.075
-  slideStrength: 0.2
+  slideStrength: 0.4
   strengthResponse: 5
 --- !u!1 &7901416161778573438
 GameObject:
