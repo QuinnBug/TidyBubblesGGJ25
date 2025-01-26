@@ -8,7 +8,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Transform bulletSpawn;
     [SerializeField] int ammo = 6;
     private bool canFire => ammo > 0;
-    [SerializeField] private float fireRate = 0.1f;
+    [SerializeField] private float fireRate = 0.24f;
     private float shotTimer = 0;
 
     private void Awake() {
