@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9020500787441924271}
   - component: {fileID: 7962494542574637163}
   - component: {fileID: 8611126451463167421}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5344079576490213045}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Camera Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 7342042770395196224}
   - component: {fileID: 1445576406281484759}
   - component: {fileID: 7228465410244847199}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WalkingBrush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 2324109250075082316}
   - component: {fileID: 4726344915106942947}
   - component: {fileID: 1271058219686782481}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 8164024363371959334}
   - component: {fileID: 3118170040805609520}
   - component: {fileID: 982418520738381638}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 383255001635585542}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -532,7 +532,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8267510923190674079}
   - component: {fileID: 7265819304962639074}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -580,7 +580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2965493358441191416}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -614,7 +614,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7442285669186563816}
   - component: {fileID: 5384437301118661514}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -660,7 +660,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2922738914873267805}
   - component: {fileID: 365209437026041241}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FloorCleaner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -709,7 +709,7 @@ GameObject:
   m_Component:
   - component: {fileID: 247673510185577921}
   - component: {fileID: 4117867435628568318}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Vignette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -756,7 +756,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1135588329637830879}
   - component: {fileID: 3953958311848979621}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lean
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -806,7 +806,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3172371832290447408}
   - component: {fileID: 5300892472463884418}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -857,7 +857,7 @@ GameObject:
   - component: {fileID: 5821001513099177028}
   - component: {fileID: 251750279563594139}
   - component: {fileID: 3743713601523021337}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SlidingBrush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -953,7 +953,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8320094861748945398}
   - component: {fileID: 6515268888124767866}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerFinal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1004,9 +1004,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9119833442610589761}
     m_Modifications:
+    - target: {fileID: 951590399829347379, guid: c3ffbaede61949d4288159ffccc8571d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1104045640915513268, guid: c3ffbaede61949d4288159ffccc8571d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1126686316586806006, guid: c3ffbaede61949d4288159ffccc8571d, type: 3}
       propertyPath: m_Name
       value: Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 1126686316586806006, guid: c3ffbaede61949d4288159ffccc8571d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802665038059108168, guid: c3ffbaede61949d4288159ffccc8571d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3975214264708119371, guid: c3ffbaede61949d4288159ffccc8571d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6146411855691171265, guid: c3ffbaede61949d4288159ffccc8571d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508658174646516480, guid: c3ffbaede61949d4288159ffccc8571d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6629379576175045692, guid: c3ffbaede61949d4288159ffccc8571d, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6663348483483674758, guid: c3ffbaede61949d4288159ffccc8571d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1047,6 +1079,10 @@ PrefabInstance:
     - target: {fileID: 6663348483483674758, guid: c3ffbaede61949d4288159ffccc8571d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 3.477
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547728794759264911, guid: c3ffbaede61949d4288159ffccc8571d, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

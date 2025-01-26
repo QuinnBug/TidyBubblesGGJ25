@@ -8,6 +8,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Transform bulletSpawn;
     [SerializeField] int ammo = 6;
     private bool canFire => ammo > 0;
+    [SerializeField] private float fireRate = 0.1f;
+    private float shotTimer = 0;
 
     private void Awake() {
         dirtBrush = GetComponent<DirtBrush>();
@@ -21,8 +23,13 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) {
+        if (shotTimer > 0) {
+            shotTimer -= Time.deltaTime;
+        }
+
+        if (Input.GetMouseButton(0) && shotTimer <= 0) {
             Shoot();
+            shotTimer = fireRate;
         }
     }
 
