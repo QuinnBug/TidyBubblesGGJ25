@@ -561,7 +561,7 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
             }
             CameraPropsManager.Instance.AddScreenShake(fallSpeed);
             Debug.Log("Slam Hit: " + slamStrength);
-            //broomLeg.ShitOnFloor(slamStrength);
+            broomLeg.ShitOnFloor(slamStrength);
 
         }
 
