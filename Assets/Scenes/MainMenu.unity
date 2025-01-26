@@ -318,7 +318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6477785936430036769, guid: e30b24d5ddd3ab34cbbb71fafbb336eb, type: 3}
       propertyPath: 'speedBoundaries.Array.data[3]'
-      value: 99
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2134,7 +2134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fae785a1e7819de45a9e0786072b76c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 15
+  scrollSpeed: 10
   scrollObjects:
   - {fileID: 1701405275}
   - {fileID: 1039288164}
