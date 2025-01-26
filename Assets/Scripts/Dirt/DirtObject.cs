@@ -81,8 +81,9 @@ public class DirtObject : MonoBehaviour {
         renderer.material.SetTexture("_DirtMask", cleanTexture);
         renderer.material.SetTexture("_DirtTexture", null);
 
-        GameManager.Instance.PlayCleanVfx(transform.position);
         GameManager.Instance.AddCleanedObject(this);
+        GameManager.Instance.PlayCleanVfx(transform.position);
+
     }
     private float GetCleanliness() {
         return (float)cleanPixels / totalPixels;
