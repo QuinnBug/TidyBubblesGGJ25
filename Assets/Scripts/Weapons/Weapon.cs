@@ -49,12 +49,14 @@ public class Weapon : MonoBehaviour
         newBullet.Launch(30);
 
         CameraPropsManager.Instance.Recoil();
+        AudioManager.Instance.PlayFXOneShot(0, true);
     }
     private void OnBulletHit(Bullet bullet) {
         ammo++;
         bullet.OnMiss.RemoveListener(OnBulletMiss);
         bullet.OnHit.RemoveListener(OnBulletHit);
         bullet.OnHitDirt.RemoveListener(OnBulletHitDirt);
+        AudioManager.Instance.PlayFXOneShot(1, true);
     }
     private void OnBulletHitDirt(Bullet bullet, DirtObject dirt, Vector2 textureCoords) {
         ammo++;

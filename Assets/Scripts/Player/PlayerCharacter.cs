@@ -342,6 +342,7 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
                         surfaceNormal: motor.GroundingStatus.GroundNormal
                     ) * slideSpeed;
 
+                AudioManager.Instance.PlayFXOneShot(5, true);
             }
             //Move.
             if (_state.Stance is Stance.Stand or Stance.Crouch)
@@ -562,7 +563,7 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
             CameraPropsManager.Instance.AddScreenShake(fallSpeed);
             Debug.Log("Slam Hit: " + slamStrength);
             broomLeg.ShitOnFloor(slamStrength);
-
+            AudioManager.Instance.PlayFXOneShot(2 + (int)slamStrength, true);
         }
 
     }

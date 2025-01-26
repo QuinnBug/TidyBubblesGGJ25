@@ -82,7 +82,7 @@ public class AudioManager : PersistentSingleton<AudioManager>
         PlayVoiceLine(idx);
     }
 
-    void PlayFXOneShot(int fxIndex, bool randomPitch) 
+    public void PlayFXOneShot(int fxIndex, bool randomPitch) 
     {
         AudioSource source = fxSources.Fetch().GetComponent<AudioSource>();
 
