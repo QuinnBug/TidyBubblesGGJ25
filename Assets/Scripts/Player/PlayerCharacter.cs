@@ -41,6 +41,7 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     [SerializeField] private KinematicCharacterMotor motor;
     [SerializeField] private Transform root;
     [SerializeField] private Transform cameraTarget;
+    [SerializeField] private BroomLeg broomLeg;
     [Space]
     [SerializeField] private float walkSpeed = 20f;
     [SerializeField] private float crouchSpeed = 7f;
@@ -59,6 +60,9 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     [Space]
     [SerializeField] private float slamTime = 0.2f;
     [SerializeField] private float airSlamSpeed = 30f;
+    [SerializeField] private float softSlamTreshold = 0.3f;
+    [SerializeField] private float mediumSlamTreshold = 0.6f;
+    [SerializeField] private float hardSlamTreshold = 0.9f;
     [Space]
     [SerializeField] private float standHeight = 2f;
     [SerializeField] private float crouchHeight = 1f;
@@ -100,6 +104,8 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     private bool _requestedCrouchInAir;
 
     private bool _requestedAirSlam;
+
+    private bool _usedAirSlam;
 
     private float _timeSinceUngrounded;
 
@@ -473,9 +479,13 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
                 effectiveGravity *= jumpSustainGravity;
             }
             currentVelocity += deltaTime * effectiveGravity * motor.CharacterUp;
-            if (_requestedAirSlam)
+
+            //Air Slam
+            if (_requestedAirSlam && !_usedAirSlam)
             {
                 _requestedAirSlam = false;
+                _usedAirSlam = true;
+
                 currentVelocity = motor.CharacterUp * airSlamSpeed;
                 Debug.Log("SLAM!!");
             }
@@ -530,6 +540,31 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
 
     public void OnGroundHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
     {
+        if (_usedAirSlam)
+        {
+            var fallSpeed = _lastState.Velocity.y;
+            fallSpeed = Mathf.Abs(fallSpeed);
+            fallSpeed = (fallSpeed - 30) / (87 - 30);
+            _usedAirSlam = false;
+            var slamStrength = SlamStrength.Soft;
+            if (fallSpeed > 0 && fallSpeed < softSlamTreshold)
+            {
+                slamStrength = SlamStrength.Soft;
+            }
+            else if (fallSpeed >= softSlamTreshold && fallSpeed < mediumSlamTreshold)
+            {
+                slamStrength = SlamStrength.Medium;
+            }
+            else
+            {
+                slamStrength = SlamStrength.Hard;
+            }
+            CameraPropsManager.Instance.AddScreenShake(fallSpeed);
+            Debug.Log("Slam Hit: " + slamStrength);
+            //broomLeg.ShitOnFloor(slamStrength);
+
+        }
+
     }
 
     public void OnMovementHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)

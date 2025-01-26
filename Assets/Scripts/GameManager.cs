@@ -8,12 +8,14 @@ public class GameManager : PersistentSingleton<GameManager>
 {
     [Tooltip("Game Values")]
     public float[] speedBoundaries;
+    public FloatRange voicelineDelayRange;
     SceneId currentScene;
     PlayerCharacter player;
     float playerSpeed = 0;
     int intensityLevel = 0;
     [SerializeField] private GameObject completeCleanFx;
     private List<GameObject> cleanFxPool = new();
+    float voicelineTimer = 1;
 
     private void Start()
     {
@@ -73,7 +75,19 @@ public class GameManager : PersistentSingleton<GameManager>
 
         AudioManager.Instance.SetMusicLevel(intensityLevel);
         if (intensityLevel >= 1) {
+        if (intensityLevel >= 2)
+        {
             CameraPropsManager.Instance.QueueFace(CameraPropsManager.Face.HAPPY, 0.01f);
+        }
+
+        if (voicelineTimer <= 0)
+        {
+            AudioManager.Instance.RandomVoiceLine();
+            voicelineTimer = voicelineDelayRange.RandomValue();
+        }
+        else
+        {
+            voicelineTimer -= Time.deltaTime;
         }
     }
 

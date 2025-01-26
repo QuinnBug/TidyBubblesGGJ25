@@ -6,8 +6,8 @@ using UnityEngine.Audio;
 [Serializable]
 public class GameMusic
 {
-    public enum MixerVar { BASE_VOL, LAYER1_VOL, LAYER2_VOL }
-    private string[] variableStrings = new string[3] { "Music_Base_Vol", "Music_1_Vol", "Music_2_Vol" };
+    public enum MixerVar { BASE_VOL, LAYER1_VOL, LAYER2_VOL, LAYER3_VOL }
+    private string[] variableStrings = new string[4] { "Music_Base_Vol", "Music_1_Vol", "Music_2_Vol", "Music_3_Vol" };
     private float[] targetValues;
     private float[] currentValues;
     private string VarStr(MixerVar var) { return variableStrings[(int)var]; }
@@ -15,6 +15,7 @@ public class GameMusic
     [SerializeField]
     private AudioMixer mixer;
     public float transitionRate = 2.5f;
+    public int TrackCount => variableStrings.Length;
 
     GameMusic() 
     {

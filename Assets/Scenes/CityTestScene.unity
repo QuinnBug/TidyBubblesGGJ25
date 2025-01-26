@@ -34119,6 +34119,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerFinal
       objectReference: {fileID: 0}
+    - target: {fileID: 9020500787441924271, guid: 64b9182b031dd55458fa67ed06aa9ca7, type: 3}
+      propertyPath: broomLeg
+      value: 
+      objectReference: {fileID: 1396802966}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
