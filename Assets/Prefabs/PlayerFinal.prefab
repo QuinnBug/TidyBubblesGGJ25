@@ -1245,6 +1245,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 3.477
       objectReference: {fileID: 0}
+    - target: {fileID: 7480783110652917342, guid: c3ffbaede61949d4288159ffccc8571d, type: 3}
+      propertyPath: ammo
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480783110652917342, guid: c3ffbaede61949d4288159ffccc8571d, type: 3}
+      propertyPath: fireRate
+      value: 0.09
+      objectReference: {fileID: 0}
     - target: {fileID: 7547728794759264911, guid: c3ffbaede61949d4288159ffccc8571d, type: 3}
       propertyPath: m_Layer
       value: 6
