@@ -10,6 +10,11 @@ public class Bullet : MonoBehaviour {
     public UnityEvent<Bullet, DirtObject, Vector2> OnHitDirt;
     private float lifetime = 3.5f;
     public Rigidbody Rb;
+    [Space]
+    public ParticleSystem bubbles;
+
+    [SerializeField] private float rayDeviation = 0.8f;
+    private Vector3 deviation;
 
     private void Update() {
         lifetime -= Time.deltaTime;
@@ -25,19 +30,32 @@ public class Bullet : MonoBehaviour {
         if (collision.gameObject.TryGetComponent(out DirtObject dirt)) {
             var contactPoint = collision.GetContact(0).point;
             var rayDirection = contactPoint - transform.position;
+            deviation = new Vector3(Random.Range(-rayDeviation, 0), 0, Random.Range(-rayDeviation, 0));
+            var rayDirDeviated = rayDirection + deviation;
             //Debug.DrawRay(transform.position, rayDirection, Color.red, 5f);
-            if (Physics.Raycast(transform.position, rayDirection, out var hit)) {
+            if (Physics.Raycast(transform.position, rayDirDeviated, out var hit)) {
                 var textureCoord = hit.textureCoord;
                 OnHitDirt.Invoke(this, dirt, textureCoord);
             }
             else {
-                Debug.Log($"Fuck you");
-                OnMiss.Invoke(this);
+                //  The ray deviated too much and missed the object
+                if (Physics.Raycast(transform.position, rayDirection, out var backupHit)) {
+                    var textureCoord = backupHit.textureCoord;
+                    OnHitDirt.Invoke(this, dirt, textureCoord);
+                }
+                else OnMiss.Invoke(this);
             }
-
         }
         else OnHit.Invoke(this);
+
+        SpawnParticles(collision.GetContact(0).point);
         Destroy(gameObject);
     }
 
+    void SpawnParticles(Vector3 pos) 
+    {
+        ParticleSystem ps = Instantiate<ParticleSystem>(bubbles);
+        ps.transform.position = pos;
+        Destroy(ps.gameObject, ps.main.startLifetime.constantMax);
+    }
 }

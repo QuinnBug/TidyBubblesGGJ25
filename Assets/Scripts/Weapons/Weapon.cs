@@ -6,8 +6,10 @@ public class Weapon : MonoBehaviour
     private DirtBrush dirtBrush; // Will be attached to the bullet
     [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private Transform bulletSpawn;
-    [SerializeField] int ammo = 3;
+    [SerializeField] int ammo = 6;
     private bool canFire => ammo > 0;
+    [SerializeField] private float fireRate = 0.24f;
+    private float shotTimer = 0;
 
     private void Awake() {
         dirtBrush = GetComponent<DirtBrush>();
@@ -21,8 +23,13 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) {
+        if (shotTimer > 0) {
+            shotTimer -= Time.deltaTime;
+        }
+
+        if (Input.GetMouseButton(0) && shotTimer <= 0) {
             Shoot();
+            shotTimer = fireRate;
         }
     }
 
@@ -40,6 +47,8 @@ public class Weapon : MonoBehaviour
         newBullet.transform.forward = transform.right;
 
         newBullet.Launch(30);
+
+        CameraPropsManager.Instance.Recoil();
     }
     private void OnBulletHit(Bullet bullet) {
         ammo++;

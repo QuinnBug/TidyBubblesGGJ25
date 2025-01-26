@@ -6,10 +6,8 @@ using UnityEngine.SceneManagement;
 public enum SceneId 
 {
     MENU,
-    HQ,
-    WORLD_MAP,
-    FIGHT,
-    GAME_OVER
+    GAME,
+    END
 }
 
 public class SceneHandler: PersistentSingleton<SceneHandler>

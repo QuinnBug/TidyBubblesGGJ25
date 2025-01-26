@@ -399,17 +399,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1610462659 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9020500787441924271, guid: 64b9182b031dd55458fa67ed06aa9ca7, type: 3}
-  m_PrefabInstance: {fileID: 1689340376}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4df08ac0a8118f049b947a0d2eb38f0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1689340376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -418,10 +407,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 365209437026041241, guid: 64b9182b031dd55458fa67ed06aa9ca7, type: 3}
-      propertyPath: playerCharacter
-      value: 
-      objectReference: {fileID: 1610462659}
     - target: {fileID: 8320094861748945398, guid: 64b9182b031dd55458fa67ed06aa9ca7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.46
@@ -614,7 +599,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brushData: {fileID: 11400000, guid: c20a5d65ef24ec64b9a167a7d0f0e6e4, type: 2}
+  BrushSize: {x: 0, y: 0}
   brushCollider: {fileID: 1990190257}
+  drawSpeed: 0.08
 --- !u!65 &1990190257
 BoxCollider:
   m_ObjectHideFlags: 0
