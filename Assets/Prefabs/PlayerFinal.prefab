@@ -51,6 +51,7 @@ MonoBehaviour:
   motor: {fileID: 8611126451463167421}
   root: {fileID: 383255001635585542}
   cameraTarget: {fileID: 5344079576490213045}
+  broomLeg: {fileID: 0}
   walkSpeed: 20
   crouchSpeed: 10
   jumpSpeed: 20
@@ -64,6 +65,9 @@ MonoBehaviour:
   slideGravity: -90
   slamTime: 0.2
   airSlamSpeed: -30
+  softSlamTreshold: 0.3
+  mediumSlamTreshold: 0.6
+  hardSlamTreshold: 0.9
   standHeight: 2
   crouchHeight: 1
   walkResponse: 25
@@ -834,9 +838,9 @@ MonoBehaviour:
   playerCharacter: {fileID: 9020500787441924271}
   walkingBrush: {fileID: 1445576406281484759}
   slidingBrush: {fileID: 251750279563594139}
-  floorSlamSoft: {fileID: 0}
-  floorSlamMed: {fileID: 0}
-  floorSlamHard: {fileID: 0}
+  floorSlamSoft: {fileID: 3950857010940993465}
+  floorSlamMed: {fileID: 7883070447949155736}
+  floorSlamHard: {fileID: 5277987676330697050}
 --- !u!114 &3950857010940993465
 MonoBehaviour:
   m_ObjectHideFlags: 0
