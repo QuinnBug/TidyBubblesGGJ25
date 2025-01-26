@@ -847,8 +847,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d772a735b3ebe48ad202fd85c0de61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brushData: {fileID: 0}
-  BrushSize: {x: 0, y: 0}
+  brushData: {fileID: 11400000, guid: f86c3b3cefd200d4093f934f9eedcbdd, type: 2}
+  BrushSize: {x: 1, y: 1}
 --- !u!114 &7883070447949155736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -861,8 +861,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d772a735b3ebe48ad202fd85c0de61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brushData: {fileID: 0}
-  BrushSize: {x: 0, y: 0}
+  brushData: {fileID: 11400000, guid: 27c517329d3810a45be85a276427feb9, type: 2}
+  BrushSize: {x: 1, y: 1}
 --- !u!114 &5277987676330697050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,8 +875,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d772a735b3ebe48ad202fd85c0de61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brushData: {fileID: 0}
-  BrushSize: {x: 0, y: 0}
+  brushData: {fileID: 11400000, guid: 800c546553d060844a1441e4e1de8e47, type: 2}
+  BrushSize: {x: 1, y: 1}
 --- !u!1 &6153265205227708822
 GameObject:
   m_ObjectHideFlags: 0

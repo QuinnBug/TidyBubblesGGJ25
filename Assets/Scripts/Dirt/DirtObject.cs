@@ -60,7 +60,7 @@ public class DirtObject : MonoBehaviour {
         if (IsClean) return;
         var cleanedPixels = cleanData.GetCleanData();
         for (int i = 0; i < cleanedPixels.Count; i++) {
-            if (cleanedPixels[i].Item2.g < cleanlinessTolerance && dirtPixels[cleanedPixels[i].Item1.x * width + cleanedPixels[i].Item1.y].g > cleanlinessTolerance) {
+            if (cleanedPixels[i].Item2.g < cleanlinessTolerance && dirtPixels[cleanedPixels[i].Item1.x + width * cleanedPixels[i].Item1.y].g > cleanlinessTolerance) {
                 cleanPixels++;
             }
             dirtPixels[cleanedPixels[i].Item1.x + width * cleanedPixels[i].Item1.y ] = cleanedPixels[i].Item2;
