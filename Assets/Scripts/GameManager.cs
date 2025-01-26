@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -18,6 +19,8 @@ public class GameManager : PersistentSingleton<GameManager>
     float voicelineTimer = 1;
 
     private List<GameObject> dirtystuff = new();
+    private List<DirtObject> cleanedObjects = new();
+    [SerializeField] private int percentageToWin = 80;
 
     private void Start()
     {
@@ -39,6 +42,9 @@ public class GameManager : PersistentSingleton<GameManager>
                 newFx.SetActive(false);
                 cleanFxPool.Add(newFx);
             }
+            GameObject[] dirtObjects = GameObject.FindGameObjectsWithTag("Dirt");
+            dirtystuff = dirtObjects.ToList();
+            Debug.Log($"Found {dirtystuff.Count} dirty objects.");
         }
         else
         {
@@ -89,6 +95,10 @@ public class GameManager : PersistentSingleton<GameManager>
                 voicelineTimer -= Time.deltaTime;
             }
         }
+        var cleanedPercentage = ((float)cleanedObjects.Count / dirtystuff.Count) * 100f;
+        if (cleanedPercentage > percentageToWin) {
+            //Win;
+        }
     }
 
 
@@ -105,6 +115,13 @@ public class GameManager : PersistentSingleton<GameManager>
             newFx.SetActive(true);
             cleanFxPool.Add(newFx);
         }
+    }
+    public void AddCleanedObject(DirtObject dirtyObject) {
+        cleanedObjects.Add(dirtyObject);
+        var cleanedPercentage = ((float)cleanedObjects.Count / dirtystuff.Count) * 100f;
+
+        Debug.Log($"Object has been cleaned. You are {cleanedPercentage} complete cleaning.");
+
     }
 
 }
