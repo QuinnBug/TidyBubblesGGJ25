@@ -105,6 +105,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Rb: {fileID: 7011952001778011688}
+  bubbles: {fileID: 4107441830264600297, guid: 2d4a357a35effc24c9619978102113b6, type: 3}
 --- !u!1 &6913083778670080825
 GameObject:
   m_ObjectHideFlags: 0
