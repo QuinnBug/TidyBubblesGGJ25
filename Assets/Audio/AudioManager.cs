@@ -15,6 +15,7 @@ public class AudioManager : PersistentSingleton<AudioManager>
     [Space]
     public AudioClip[] voClips;
     public AudioSource voSource;
+    public List<int> voClipOptions = new List<int>();
     
     int musicLevel = 0;
 
@@ -37,7 +38,7 @@ public class AudioManager : PersistentSingleton<AudioManager>
     {
         if (Keyboard.current.upArrowKey.wasPressedThisFrame)
         {
-            PlayVoiceLine(Random.Range(0, voClips.Length));
+            RandomVoiceLine();
         }
         if (Keyboard.current.downArrowKey.wasPressedThisFrame)
         {
@@ -58,6 +59,22 @@ public class AudioManager : PersistentSingleton<AudioManager>
         {
             SetMusicLayer(i, musicLevel >= i);
         }
+    }
+
+    public void RandomVoiceLine() 
+    {
+        if (voClipOptions.Count == 0)
+        {
+            voClipOptions.Clear();
+            for (int i = 0; i < voClips.Length; i++)
+            {
+                voClipOptions.Add(i);
+            }
+        }
+
+        int idx = Random.Range(0, voClipOptions.Count);
+        PlayVoiceLine(voClipOptions[idx]);
+        voClipOptions.Remove(idx);
     }
 
     void PlayFXOneShot(int fxIndex, bool randomPitch) 

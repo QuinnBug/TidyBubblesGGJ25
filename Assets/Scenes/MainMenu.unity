@@ -430,6 +430,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6477785936430036769, guid: e30b24d5ddd3ab34cbbb71fafbb336eb, type: 3}
+      propertyPath: voicelineDelayRange.max
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6477785936430036769, guid: e30b24d5ddd3ab34cbbb71fafbb336eb, type: 3}
+      propertyPath: voicelineDelayRange.min
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6477785936430036769, guid: e30b24d5ddd3ab34cbbb71fafbb336eb, type: 3}
       propertyPath: speedBoundaries.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -443,7 +451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6477785936430036769, guid: e30b24d5ddd3ab34cbbb71fafbb336eb, type: 3}
       propertyPath: 'speedBoundaries.Array.data[2]'
-      value: 20
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -486,15 +494,15 @@ MonoBehaviour:
   gameAudio:
     mixer: {fileID: 24100000, guid: 18d6899cfd9209b43b819438b4cd83c3, type: 2}
     transitionRate: 1
+  fxSourcePrefab: {fileID: 5789898745261458457, guid: 0e9202a2218b8844582a44a20660cff5, type: 3}
+  pitchRange:
+    min: 0.5
+    max: 1.25
   fxClips:
   - {fileID: 8300000, guid: a4f83d6bcb8c0a24b9ab3c927fcad220, type: 3}
   - {fileID: 8300000, guid: 7e4cad86908212f45926d66a0228e8fb, type: 3}
   - {fileID: 8300000, guid: 149ffd0add6ae894484eee1e535232af, type: 3}
   - {fileID: 8300000, guid: e3f2286b0a5c76642aa886e6650b45ad, type: 3}
-  pitchRange:
-    min: 0.5
-    max: 1.25
-  fxSourcePrefab: {fileID: 5789898745261458457, guid: 0e9202a2218b8844582a44a20660cff5, type: 3}
   voClips:
   - {fileID: 8300000, guid: 8af0f5036b78c004da55057e465f7c40, type: 3}
   - {fileID: 8300000, guid: 07ce344a09e2d1946a7018c82fc8370d, type: 3}
@@ -504,6 +512,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 227b19f2490a7554fadb8aa36266944a, type: 3}
   - {fileID: 8300000, guid: bacd485ce34fcfb48a1bb39ed0c68193, type: 3}
   voSource: {fileID: 1101566603}
+  voClipOptions: 
 --- !u!4 &1101566599
 Transform:
   m_ObjectHideFlags: 0
