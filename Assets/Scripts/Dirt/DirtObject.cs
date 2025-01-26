@@ -45,7 +45,6 @@ public class DirtObject : MonoBehaviour {
             templateDirtMask.SetPixels(dirtMaskBase.GetPixels());
             templateDirtMask.Apply();
             renderer.material.SetTexture("_DirtMask", templateDirtMask);
-            Debug.Log("Dirt texture applied");
         }
         totalPixels = templateDirtMask.GetPixels().Length;
         dirtPixels = templateDirtMask.GetPixels();
@@ -80,6 +79,8 @@ public class DirtObject : MonoBehaviour {
     public void ClearAllDirt() {
         var renderer = GetComponent<Renderer>();
         renderer.material.SetTexture("_DirtMask", cleanTexture);
+        renderer.material.SetTexture("_DirtTexture", null);
+
         GameManager.Instance.PlayCleanVfx(transform.position);
     }
     private float GetCleanliness() {

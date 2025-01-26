@@ -154,7 +154,7 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
         };
 
         //Air Slam
-        if (input.airSlam)
+        if (input.airSlam && !_usedAirSlam && !motor.GroundingStatus.IsStableOnGround)
         {
             Debug.Log("Requested Slam!");
             _requestedAirSlam = true;
@@ -555,13 +555,13 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
             {
                 slamStrength = SlamStrength.Medium;
             }
-            else
+            else if (fallSpeed >= mediumSlamTreshold && fallSpeed <= 1f)
             {
                 slamStrength = SlamStrength.Hard;
             }
             CameraPropsManager.Instance.AddScreenShake(fallSpeed);
             Debug.Log("Slam Hit: " + slamStrength);
-            //broomLeg.ShitOnFloor(slamStrength);
+            broomLeg.ShitOnFloor(slamStrength);
 
         }
 
