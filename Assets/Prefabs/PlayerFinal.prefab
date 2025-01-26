@@ -235,6 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brushData: {fileID: 11400000, guid: c20a5d65ef24ec64b9a167a7d0f0e6e4, type: 2}
+  BrushSize: {x: 0, y: 0}
   brushCollider: {fileID: 7342042770395196224}
 --- !u!54 &7228465410244847199
 Rigidbody:
@@ -694,7 +695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 844082bfef8270c40ad779ff9d3491db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCharacter: {fileID: 0}
+  playerCharacter: {fileID: 9020500787441924271}
   walkingBrush: {fileID: 1445576406281484759}
   slidingBrush: {fileID: 251750279563594139}
 --- !u!1 &6153265205227708822
@@ -911,6 +912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brushData: {fileID: 11400000, guid: a3ea7022d4c09704898779d2feb4e7a0, type: 2}
+  BrushSize: {x: 0, y: 0}
   brushCollider: {fileID: 5821001513099177028}
 --- !u!54 &3743713601523021337
 Rigidbody:
