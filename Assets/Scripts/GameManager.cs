@@ -23,10 +23,10 @@ public class GameManager : PersistentSingleton<GameManager>
     {
         SceneHandler.OnSceneChange += OnSceneLoaded;
 
-       
+
     }
 
-    void OnSceneLoaded(int sceneNumber) 
+    void OnSceneLoaded(int sceneNumber)
     {
         cleanFxPool.Clear();
         currentScene = (SceneId)sceneNumber;
@@ -34,7 +34,8 @@ public class GameManager : PersistentSingleton<GameManager>
         {
             player = FindFirstObjectByType<PlayerCharacter>();
 
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 3; i++)
+            {
                 GameObject newFx = Instantiate(completeCleanFx);
                 newFx.SetActive(false);
                 cleanFxPool.Add(newFx);
@@ -79,16 +80,20 @@ public class GameManager : PersistentSingleton<GameManager>
         }
 
         AudioManager.Instance.SetMusicLevel(intensityLevel);
-        if (intensityLevel >= 1) {
-            if (intensityLevel >= 2) {
+        if (intensityLevel >= 1)
+        {
+            if (intensityLevel >= 2)
+            {
                 CameraPropsManager.Instance.QueueFace(CameraPropsManager.Face.HAPPY, 0.01f);
             }
 
-            if (voicelineTimer <= 0) {
+            if (voicelineTimer <= 0)
+            {
                 AudioManager.Instance.RandomVoiceLine();
                 voicelineTimer = voicelineDelayRange.RandomValue();
             }
-            else {
+            else
+            {
                 voicelineTimer -= Time.deltaTime;
             }
         }
@@ -96,10 +101,13 @@ public class GameManager : PersistentSingleton<GameManager>
 
 
 
-    public void PlayCleanVfx(Vector3 location) {
-        if (cleanFxPool.Find(x => !x.activeInHierarchy) != null) {
+    public void PlayCleanVfx(Vector3 location)
+    {
+        if (cleanFxPool.Find(x => !x.activeInHierarchy) != null)
+        {
             var activeFx = cleanFxPool.Find(x => !x.activeInHierarchy);
             activeFx.transform.position = location;
             activeFx.SetActive(true);
         }
+    }
 }
